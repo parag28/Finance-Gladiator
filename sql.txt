@@ -1,101 +1,99 @@
-drop table userdetails cascade constraints;
-create table userdetails
+create table "USER"
 (
-  username varchar2(30) primary key,
-  name varchar2(30) not null,
-  email varchar2(30) not null,
-  dateofbirth date,
-  phonenumber number,
-  address varchar2(200)
-);
+    USERNAME             VARCHAR2(30) not null
+        primary key,
+    NAME                 VARCHAR2(30) not null,
+    EMAIL                VARCHAR2(30) not null,
+    DATEOFBIRTH          DATE,
+    PHONENUMBER          NUMBER,
+    ADDRESS              VARCHAR2(200),
+    BANKNAME             VARCHAR2(30),
+    SAVINGSACCOUNTNUMBER NUMBER,
+    IFSCCODE             VARCHAR2(15)
+)
+;
 
-
-drop table login cascade constraints;
-create table login
+create table LOGIN
 (
-username varchar2(30) primary key,
-password varchar2(30),
-usertype number,
-foreign key (username) references userdetails(username)  
-);
+    USERNAME             VARCHAR2(30) not null
+        primary key
+        references "USER",
+    PASSWORD             VARCHAR2(30),
+    USERTYPE             NUMBER,
+    UserApprovalStatus NUMBER
+)
+;
 
-
-drop table approvalstatus cascade constraints;
-create table approvalstatus
+create table PRODUCT
 (
-username varchar2(30) primary key,
-foreign key (username) references userdetails(username),
-approvalstatus number
-);
+    PRODUCTID          NUMBER not null
+        primary key,
+    PRODUCTNAME        VARCHAR2(30),
+    PRODUCTINFORMATION VARCHAR2(3000),
+    PRODUCTPRICE       NUMBER,
+    PRODUCTPICTURE     VARCHAR2(1000),
+    PRODUCTCATEGORY    VARCHAR2(30),
+    NUMBEROFPRODUCTS   NUMBER
+)
+;
 
-
-drop table product cascade constraints;
-create table product(
-productid varchar2(30) primary key,
-productname varchar2(30),
-productinformation varchar(3000),
-productprice number,
-productpicture varchar2(1000)
-);
-
-
-
-drop table transactions cascade constraints;
-create table transactions
+create table TRANSACTIONS
 (
-transactionid varchar(30),
-transactionamount number,
-productid varchar2(30),
-foreign key (productid) references product(productid),
-username varchar2(30) ,
-foreign key (username) references userdetails(username),
-productquantity number
-);
+    TRANSACTIONID     NUMBER,
+    TRANSACTIONAMOUNT NUMBER,
+    PRODUCTID         NUMBER
+        constraint TRANSACTIONS_FK
+            references PRODUCT(productid),
+    USERNAME          VARCHAR2(30)
+        references User(Username),
+    PRODUCTQUANTITY   NUMBER,
+    TRANSACTIONSTATUS NUMBER
+)
+;
 
-drop table userfinancialdetails cascade constraints;
-create table userfinancialdetails(
-username varchar2(30) primary key,
-foreign key (username) references userdetails(username),
-bankname varchar2(100),
-savingsaccountnumber number,
-ifsccode varchar2(15)
-);
+create table CARD
+(
+    USERNAME        VARCHAR2(30) not null
+        primary key
+        references USERDETAILS (),
+    CARDTYPE        NUMBER,
+    CARDNUMBER      NUMBER,
+    CREDITREMAINING NUMBER,
+    VALIDUPTO       DATE
+)
+/
 
-drop table carddetails cascade constraints;
-create table carddetails(
-username varchar2(30) primary key,
-foreign key (username) references userdetails(username),
-cardtype number,
-cardnumber number,
-creditremaining number,
-validupto date
-);
-drop table emidetails cascade constraints;
-create table emidetails(
- username varchar2(30),
- emiid varchar2(30) primary key,
- emidate varchar2(30),
- emispaid number,
- remainingemis number,
- productId varchar2(30),
- monthlycharge number,
- foreign key (username) references userdetails(username),
- foreign key (productid) references product(productid)
- );
+create table EMI
+(
+    USERNAME      VARCHAR2(30)
+        references "USER",
+    EMIID         NUMBER not null
+        primary key,
+    EMIDATE       VARCHAR2(30),
+    EMISPAID      NUMBER,
+    REMAININGEMIS NUMBER,
+    PRODUCTID     NUMBER
+        constraint EMI_PRODUCT_PRODUCTID_FK
+            references PRODUCT
+                on delete cascade,
+    MONTHLYCHARGE NUMBER
+)
+;
 
-alter table product add productcategory varchar2(30);
+create table PURCHASE
+(
+    "purchaseId" NUMBER       not null
+        constraint PURCHASE_PK
+            primary key,
+    USERNAME     VARCHAR2(30) not null
+        constraint "2fK"
+            references "USER"
+                on delete cascade,
+    PRODUCTID    NUMBER       not null
+        constraint "1FK"
+            references PRODUCT
+                on delete cascade,
+    PURCHASEDATE VARCHAR2(30)
+)
+;
 
-alter table userdetails add bankname varchar2(30);
-
-alter table userdetails add savingsaccountnumber number;
-
-alter table userdetails add ifsccode varchar2(15);
-
-drop table userfinancialdetails cascade constraints;
-
-drop table purchase cascade constraints;
-create table purchase(
-purchaseid varchar2(20) primary key,
-purchaseddate date);
-alter table PRODUCT add numberOfProducts number;
-alter table TRANSACTIONS add transactionStatus number;
