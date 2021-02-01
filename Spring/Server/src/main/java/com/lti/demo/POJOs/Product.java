@@ -8,7 +8,8 @@ import javax.persistence.*;
 @Entity
 public class Product implements Serializable {
     @Id
-    private String productId;
+    @GeneratedValue
+    private int productId;
     private String productInformation;
     private String productName;
     private String productPicture;
@@ -17,11 +18,11 @@ public class Product implements Serializable {
     @OneToMany(mappedBy="product")
     private List<EMI> emis;
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 

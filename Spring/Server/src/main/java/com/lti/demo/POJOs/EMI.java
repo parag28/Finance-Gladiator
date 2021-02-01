@@ -8,7 +8,8 @@ package com.lti.demo.POJOs;
 @Table(name= "EMI")
 public class EMI implements Serializable {
     @Id
-    private String emiId;
+    @GeneratedValue
+    private int emiId;
     private String emiDate;
     private BigDecimal emisPaid;
     private BigDecimal monthlyCharge;
@@ -22,11 +23,11 @@ public class EMI implements Serializable {
     @JoinColumn(name="USERNAME")
     private User user;
 
-    public String getEmiId() {
+    public int getEmiId() {
         return emiId;
     }
 
-    public void setEmiId(String emiId) {
+    public void setEmiId(int emiId) {
         this.emiId = emiId;
     }
 

@@ -16,6 +16,7 @@ public class Transaction implements Serializable {
     private BigDecimal transactionStatus;
     private BigDecimal transactionAmount;
     @Id
+    @GeneratedValue
     private String transactionId;
 
     @ManyToOne
