@@ -1,4 +1,4 @@
-package com.lti.demo.DAOs;
+package com.lti.demo.POJOs;
 
  import java.io.Serializable;
  import javax.persistence.*;
@@ -10,6 +10,15 @@ public class Login implements Serializable {
     private String userName;
     private String password;
     private BigDecimal userType;
+    private int userApprovalStatus;
+
+    public int getUserApprovalStatus() {
+        return userApprovalStatus;
+    }
+
+    public void setUserApprovalStatus(int userApprovalStatus) {
+        this.userApprovalStatus = userApprovalStatus;
+    }
 
     @OneToOne
     @JoinColumn(name="USERNAME")

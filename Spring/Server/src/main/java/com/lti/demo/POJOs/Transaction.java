@@ -1,4 +1,4 @@
-package com.lti.demo.DAOs;
+package com.lti.demo.POJOs;
  import java.io.Serializable;
  import javax.persistence.*;
  import java.math.BigDecimal;
@@ -9,7 +9,7 @@ package com.lti.demo.DAOs;
  *
  */
 @Entity
-@Table(name="TRANSACTIONS")
+@Table(name="TRANSACTION")
 public class Transaction implements Serializable {
 
     private BigDecimal productQuantity;

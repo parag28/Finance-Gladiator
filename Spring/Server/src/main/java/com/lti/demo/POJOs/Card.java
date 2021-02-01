@@ -1,10 +1,10 @@
-package com.lti.demo.DAOs;
+package com.lti.demo.POJOs;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
 @Entity
-@Table(name="CARDDETAILS")
+@Table(name= "CARD")
 public class Card implements Serializable {
     @Id
     private String userName;

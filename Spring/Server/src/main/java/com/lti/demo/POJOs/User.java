@@ -1,4 +1,4 @@
-package com.lti.demo.DAOs;
+package com.lti.demo.POJOs;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="USERDETAILS")
+@Table(name= "USER")
 public class User implements Serializable {
     @Id
     private String userName;

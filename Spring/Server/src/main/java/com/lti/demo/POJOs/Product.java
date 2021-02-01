@@ -1,4 +1,4 @@
-package com.lti.demo.DAOs;
+package com.lti.demo.POJOs;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
