@@ -93,4 +93,8 @@ alter table userdetails add ifsccode varchar2(15);
 
 drop table userfinancialdetails cascade constraints;
 
+drop table purchase cascade constraints;
 
+create table purchase(
+purchaseid varchar2(20) primary key,
+purchaseddate date);
