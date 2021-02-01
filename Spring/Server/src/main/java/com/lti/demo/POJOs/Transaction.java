@@ -71,7 +71,7 @@ public class Transaction implements Serializable {
         this.user = user;
     }
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name="USERNAME")
     private User user;
 

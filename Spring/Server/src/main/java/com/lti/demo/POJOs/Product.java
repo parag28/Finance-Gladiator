@@ -1,7 +1,6 @@
 package com.lti.demo.POJOs;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.*;
 
@@ -13,7 +12,10 @@ public class Product implements Serializable {
     private String productInformation;
     private String productName;
     private String productPicture;
-    private BigDecimal productPrice;
+    private double productPrice;
+
+    @OneToMany(mappedBy="product")
+    private List<Transaction> transactions;
 
     @OneToMany(mappedBy="product")
     private List<EMI> emis;
@@ -50,11 +52,11 @@ public class Product implements Serializable {
         this.productPicture = productPicture;
     }
 
-    public BigDecimal getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(BigDecimal productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -73,8 +75,5 @@ public class Product implements Serializable {
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
-
-    @OneToMany(mappedBy="product")
-    private List<Transaction> transactions;
 
 }

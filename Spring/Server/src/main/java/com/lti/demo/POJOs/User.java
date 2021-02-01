@@ -12,7 +12,7 @@ public class User implements Serializable {
     private String userName;
     private String address;
     private String bankName;
-    private Object dateOfBirth;
+    private String dateOfBirth;
     private String email;
     private String ifscCode;
     private String name;
@@ -55,11 +55,11 @@ public class User implements Serializable {
         this.bankName = bankName;
     }
 
-    public Object getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Object dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
