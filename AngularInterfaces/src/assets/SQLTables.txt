@@ -1,0 +1,96 @@
+drop table userdetails cascade constraints;
+create table userdetails
+(
+  username varchar2(30) primary key,
+  name varchar2(30) not null,
+  email varchar2(30) not null,
+  dateofbirth date,
+  phonenumber number,
+  address varchar2(200)
+);
+
+
+drop table login cascade constraints;
+create table login
+(
+username varchar2(30) primary key,
+password varchar2(30),
+usertype number,
+foreign key (username) references userdetails(username)  
+);
+
+
+drop table approvalstatus cascade constraints;
+create table approvalstatus
+(
+username varchar2(30) primary key,
+foreign key (username) references userdetails(username),
+approvalstatus number
+);
+
+
+drop table product cascade constraints;
+create table product(
+productid varchar2(30) primary key,
+productname varchar2(30),
+productinformation varchar(3000),
+productprice number,
+productpicture varchar2(1000)
+);
+
+
+
+drop table transactions cascade constraints;
+create table transactions
+(
+transactionid varchar(30),
+transactionamount number,
+productid varchar2(30),
+foreign key (productid) references product(productid),
+username varchar2(30) ,
+foreign key (username) references userdetails(username),
+productquantity number
+);
+
+drop table userfinancialdetails cascade constraints;
+create table userfinancialdetails(
+username varchar2(30) primary key,
+foreign key (username) references userdetails(username),
+bankname varchar2(100),
+savingsaccountnumber number,
+ifsccode varchar2(15)
+);
+
+drop table carddetails cascade constraints;
+create table carddetails(
+username varchar2(30) primary key,
+foreign key (username) references userdetails(username),
+cardtype number,
+cardnumber number,
+creditremaining number,
+validupto date
+);
+drop table emidetails cascade constraints;
+create table emidetails(
+ username varchar2(30),
+ emiid varchar2(30) primary key,
+ emidate varchar2(30),
+ emispaid number,
+ remainingemis number,
+ productId varchar2(30),
+ monthlycharge number,
+ foreign key (username) references userdetails(username),
+ foreign key (productid) references product(productid)
+ );
+
+alter table product add productcategory varchar2(30);
+
+alter table userdetails add bankname varchar2(30);
+
+alter table userdetails add savingsaccountnumber number;
+
+alter table userdetails add ifsccode varchar2(15);
+
+drop table userfinancialdetails cascade constraints;
+
+

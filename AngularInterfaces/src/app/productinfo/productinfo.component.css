@@ -1,0 +1,25 @@
+body{
+  height: 100%;
+  width: 100%;
+}
+.left-column{
+  width:50%;
+  position: relative;
+  float: left;
+}
+.right-column{
+  width: 50%;
+  margin-top: 100px;
+  float: left;
+}
+.left-column img{
+  width: 70%;
+  height: 30%;
+}
+.productName{
+  font-family:"Times New Roman";
+  color:#69c5d4;
+  font-size: xx-large;
+  text-align: center;
+  margin-bottom:20px;
+}
