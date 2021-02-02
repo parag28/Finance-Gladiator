@@ -1,6 +1,6 @@
-package com.lti.Repositories;
+package com.development.demo.layer2;
 
-import com.lti.POJOs.Card;
+import com.development.demo.layer1.Card;
 
 public interface CardRepository {
     String addCard(Card card);
