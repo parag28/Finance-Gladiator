@@ -1,8 +1,8 @@
-package com.lti.Repositories;
+package com.development.demo.layer2;
 
 import org.springframework.stereotype.Repository;
 
-import com.lti.POJOs.Card;
+import com.development.demo.layer1.Card;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
