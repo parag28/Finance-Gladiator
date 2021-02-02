@@ -1,4 +1,4 @@
-package com.lti.demo.repositories;
+package com.lti.demo.Repositories;
 
 import com.lti.demo.POJOs.Transaction;
 
