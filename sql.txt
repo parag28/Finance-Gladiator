@@ -1,0 +1,99 @@
+create table "USER"
+(
+    USERNAME             VARCHAR2(30) not null
+        primary key,
+    NAME                 VARCHAR2(30) not null,
+    EMAIL                VARCHAR2(30) not null,
+    DATEOFBIRTH          DATE,
+    PHONENUMBER          NUMBER,
+    ADDRESS              VARCHAR2(200),
+    BANKNAME             VARCHAR2(30),
+    SAVINGSACCOUNTNUMBER NUMBER,
+    IFSCCODE             VARCHAR2(15)
+)
+;
+
+create table LOGIN
+(
+    USERNAME             VARCHAR2(30) not null
+        primary key
+        references "USER",
+    PASSWORD             VARCHAR2(30),
+    USERTYPE             NUMBER,
+    UserApprovalStatus NUMBER
+)
+;
+
+create table PRODUCT
+(
+    PRODUCTID          NUMBER not null
+        primary key,
+    PRODUCTNAME        VARCHAR2(30),
+    PRODUCTINFORMATION VARCHAR2(3000),
+    PRODUCTPRICE       NUMBER,
+    PRODUCTPICTURE     VARCHAR2(1000),
+    PRODUCTCATEGORY    VARCHAR2(30),
+    NUMBEROFPRODUCTS   NUMBER
+)
+;
+
+create table TRANSACTIONS
+(
+    TRANSACTIONID     NUMBER,
+    TRANSACTIONAMOUNT NUMBER,
+    PRODUCTID         NUMBER
+        constraint TRANSACTIONS_FK
+            references PRODUCT(productid),
+    USERNAME          VARCHAR2(30)
+        references User(Username),
+    PRODUCTQUANTITY   NUMBER,
+    TRANSACTIONSTATUS NUMBER
+)
+;
+
+create table CARD
+(
+    USERNAME        VARCHAR2(30) not null
+        primary key
+        references USERDETAILS (),
+    CARDTYPE        NUMBER,
+    CARDNUMBER      NUMBER,
+    CREDITREMAINING NUMBER,
+    VALIDUPTO       DATE
+)
+/
+
+create table EMI
+(
+    USERNAME      VARCHAR2(30)
+        references "USER",
+    EMIID         NUMBER not null
+        primary key,
+    EMIDATE       VARCHAR2(30),
+    EMISPAID      NUMBER,
+    REMAININGEMIS NUMBER,
+    PRODUCTID     NUMBER
+        constraint EMI_PRODUCT_PRODUCTID_FK
+            references PRODUCT
+                on delete cascade,
+    MONTHLYCHARGE NUMBER
+)
+;
+
+create table PURCHASE
+(
+    "purchaseId" NUMBER       not null
+        constraint PURCHASE_PK
+            primary key,
+    USERNAME     VARCHAR2(30) not null
+        constraint "2fK"
+            references "USER"
+                on delete cascade,
+    PRODUCTID    NUMBER       not null
+        constraint "1FK"
+            references PRODUCT
+                on delete cascade,
+    PURCHASEDATE VARCHAR2(30)
+)
+;
+

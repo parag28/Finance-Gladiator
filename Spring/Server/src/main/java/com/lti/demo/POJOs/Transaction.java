@@ -16,6 +16,7 @@ public class Transaction implements Serializable {
     private BigDecimal transactionStatus;
     private BigDecimal transactionAmount;
     @Id
+    @GeneratedValue
     private String transactionId;
 
     @ManyToOne
@@ -70,7 +71,7 @@ public class Transaction implements Serializable {
         this.user = user;
     }
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name="USERNAME")
     private User user;
 

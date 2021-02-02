@@ -15,25 +15,26 @@ public class Purchase {
 
 	@Id
 	@Column(name="purchaseid")
-	private int purchaseid;
+	@GeneratedValue
+	private int purchaseId;
 	
 	@ManyToOne
 	@JoinColumn(name="username")
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="product")
+	@JoinColumn(name="productid")
 	private Product product;
 	
 	@Column(name="purchaseddate")
-	private Date purchaseddate;
+	private String purchasedDate;
 
-	public int getPurchaseid() {
-		return purchaseid;
+	public int getPurchaseId() {
+		return purchaseId;
 	}
 
-	public void setPurchaseid(int purchaseid) {
-		this.purchaseid = purchaseid;
+	public void setPurchaseId(int purchaseId) {
+		this.purchaseId = purchaseId;
 	}
 
 	public User getUser() {
@@ -52,12 +53,12 @@ public class Purchase {
 		this.product = product;
 	}
 
-	public Date getPurchaseddate() {
-		return purchaseddate;
+	public String getPurchasedDate() {
+		return purchasedDate;
 	}
-
-	public void setPurchaseddate(Date purchaseddate) {
-		this.purchaseddate = purchaseddate;
+	//Using String so that there won't be any type mismatches
+	public void setPurchasedDate(String purchasedDate) {
+		this.purchasedDate = purchasedDate;
 	}
 }
 
