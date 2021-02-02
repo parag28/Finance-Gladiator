@@ -8,6 +8,8 @@ import com.development.demo.layer2.EMIRepository;
 import com.development.demo.layer2.LoginRepository;
 import com.development.demo.layer2.ProductRepository;
 import com.development.demo.layer2.UserRepository;
+import com.development.demo.layer3.ProductService;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,9 @@ class DemoApplicationTests {
   ProductRepository productRepository;
   @Autowired
   LoginRepository loginRepository;
+  
+  @Autowired
+  ProductService productService;
   @Test
   public void loginAddTest(){
     System.out.println("Login Repository is: "+loginRepository);
@@ -99,7 +104,7 @@ class DemoApplicationTests {
   }
   @Test
   public void getProductTest(){
-    Product product = productRepository.getProduct(101);
+    Product product = productRepository.getProduct(1);
     System.out.println("Product Name: "+product.getProductname());
     System.out.println("Product Quantity: "+product.getNumberofproducts());
   }
@@ -116,13 +121,13 @@ class DemoApplicationTests {
   }
   @Test
   public void updateProductTest(){
-    Product product = productRepository.getProduct(101);
+    Product product = productRepository.getProduct(1);
     product.setNumberofproducts(product.getNumberofproducts()-1);
     System.out.println(productRepository.updateProduct(product));
   }
   @Test
   public void deleteProductTest(){
-    System.out.println(productRepository.deleteProduct(101));
+    System.out.println(productRepository.deleteProduct(1));
   }
   @Test
   public void addEmiTest(){
@@ -161,7 +166,48 @@ class DemoApplicationTests {
     emi.setRemainingemis(1);
     System.out.println(emiRepository.updateEMI(emi));
   }
+
+	
+	@Test
+	public void AddProductServiceTest() {
+		Product product1 = new Product();
+	    product1.setProductname("iphone");
+	    product1.setProductprice(10000);
+	    product1.setProductpicture(".jpg");
+	    product1.setProductinformation("new latest iphone");
+	    product1.setNumberofproducts(5);
+		productService.addProduct(product1);
+		
+		
+	}
+	@Test
+	public void GetProductServiceTest() {
+		Product p1=productService.getProduct(2);
+		System.out.println("Product name"+p1.getProductname());
+		System.out.println("product info"+p1.getProductinformation());
+	}
+	@Test
+	public void GetAllProductServiceTest() {
+		List<Product> productlist=new ArrayList<Product>();
+		productlist=productService.getAllProducts();
+		for(Product product:productlist) {
+			System.out.println("Product name"+product.getProductname());
+			System.out.println("product info"+product.getProductinformation());
+		
+		}	
+	}
+	@Test
+	public void UpdateProductServiceTest() {
+		Product p1=productService.getProduct(2);
+		p1.setProductinformation("new innovative and at low price");
+		productService.updateProduct(p1);
+		System.out.println("Product name"+p1.getProductname());
+		System.out.println("product info"+p1.getProductinformation());
+
+	}
+	@Test
+	public void DeleteProductServiceTest() {
+		productService.deleteProduct(3);
+	}
+	
 }
-
-
-
