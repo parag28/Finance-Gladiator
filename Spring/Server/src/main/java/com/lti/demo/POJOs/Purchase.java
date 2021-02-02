@@ -1,4 +1,4 @@
-package com.lti.demo.DAOs;
+package com.lti.demo.POJOs;
 
 import java.util.Date;
 

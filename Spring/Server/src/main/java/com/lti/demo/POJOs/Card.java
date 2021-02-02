@@ -14,9 +14,9 @@ public class Card implements Serializable {
     private Object validUpto;
 
     //bi-directional one-to-one association to Userdetail
-    @OneToOne
-    @JoinColumn(name = "USERNAME")
-    private User user;
+  //  @OneToOne
+   // @JoinColumn(name = "userName")
+    //private User user;
 
     public String getUserName() {
         return userName;
@@ -58,11 +58,11 @@ public class Card implements Serializable {
         this.validUpto = validUpto;
     }
 
-    public User getUser() {
-        return user;
-    }
+  //  public User getUser() {
+   //     return user;
+    //}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    //public void setUser(User user) {
+     //   this.user = user;
+   // }
 }
