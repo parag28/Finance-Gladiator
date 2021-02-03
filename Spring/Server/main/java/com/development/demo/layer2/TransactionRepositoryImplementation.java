@@ -1,8 +1,8 @@
-package com.lti.Repositories;
-
+package com.development.demo.layer2;
+import com.development.demo.layer1.*;
 import org.springframework.stereotype.Repository;
 
-import com.lti.POJOs.Transaction;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,9 +22,7 @@ public class TransactionRepositoryImplementation implements TransactionRepositor
 
     @Override
 	public Transaction getTransaction(int TransactionId) {
-        String queryString = "select t from Transaction t where t.Transactionid = "+TransactionId;
-        List<Transaction> transaction = entityManager.createQuery(queryString).getResultList();
-        return transaction.get(0);
+       return entityManager.find(Transaction.class,TransactionId );
     }
 
     @Override

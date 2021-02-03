@@ -1,8 +1,7 @@
-package com.lti.Repositories;
-
+package com.development.demo.layer2;
+import com.development.demo.layer1.*;
 import org.springframework.stereotype.Repository;
 
-import com.lti.POJOs.Purchase;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,9 +21,7 @@ public class PurchaseRepositoryImplementation implements PurchaseRepository{
 
     @Override
     public Purchase getPurchase(int purchaseId) {
-        String queryString = "select p from Purchase p where p.purchaseid = "+purchaseId;
-        List<Purchase> purchase = entityManager.createQuery(queryString).getResultList();
-        return purchase.get(0);
+    	return entityManager.find(Purchase.class,purchaseId );
     }
 
     @Override

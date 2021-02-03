@@ -25,7 +25,7 @@ public class PurchaseController {
     @CrossOrigin
     public String addPurchase(@RequestBody Purchase purchase){
         try {
-        	PurchaseService.addPurchaseService(purchase);
+        	purchaseservice.addPurchaseService(purchase);
             return "success";
         }
         catch (Exception e){
@@ -39,7 +39,7 @@ public class PurchaseController {
 	 public Purchase getPurchase(@PathVariable int PurchaseId){
 		 
 		 try {
-			 Purchase purchase1=PurchaseService.getPurchaseService(PurchaseId);
+			 Purchase purchase1=purchaseservice.getPurchaseService(PurchaseId);
 	           return purchase1;
 	        }
 	        catch (Exception e){
@@ -52,7 +52,7 @@ public class PurchaseController {
 	 @ResponseBody
 	 @CrossOrigin
 	 public List<Purchase> getAllPurchases(){
-		 List<Purchase> PurchaseList = (List<Purchase>) PurchaseService.getAllPurchasesService();
+		 List<Purchase> PurchaseList = (List<Purchase>) purchaseservice.getAllPurchasesService();
 	     return PurchaseList;
 	 
 

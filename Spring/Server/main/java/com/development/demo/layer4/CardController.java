@@ -53,7 +53,7 @@ public class CardController {
 	 @CrossOrigin
 	 public String updateLogin(@RequestBody Card card){
 		 try {
-			 CardService.updateCardService(card);
+			 cardservice.updateCardService(card);
 	            return "success";
 	     }
 	     catch (Exception e){

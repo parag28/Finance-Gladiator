@@ -34,7 +34,7 @@ public class TransactionServiceImplementation implements TransactionService{
       return transactionRepository.getTransaction(transactionId);
     }
     catch(Exception e){
-      System.out.println(e.getMessage());
+     
       return null;
     }
   }

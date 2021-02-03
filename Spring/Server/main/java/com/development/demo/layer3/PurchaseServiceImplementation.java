@@ -38,7 +38,7 @@ public class PurchaseServiceImplementation implements PurchaseService{
 			 return purchaseRepository.getPurchase(purchaseId);
 		 	}
 		 	catch(Exception e){
-		 		System.out.println(e.getMessage());
+		 		
 		 		return null;
 		 	}
     }

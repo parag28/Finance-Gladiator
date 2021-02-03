@@ -17,14 +17,17 @@ public class CardRepositoryImplementation implements CardRepository{
         return "success";
     }
 
-    @Override
-    public Card getCard(int cardId) {
-        return entityManager.find(Card.class,cardId);
-    }
+   
 
     @Transactional
     public String updateCard(Card card) {
         entityManager.merge(card);
         return "success";
     }
+    @Transactional
+	@Override
+	public Card getCard(String userName) {
+		// TODO Auto-generated method stub
+		return entityManager.find(Card.class, userName);
+	}
 }

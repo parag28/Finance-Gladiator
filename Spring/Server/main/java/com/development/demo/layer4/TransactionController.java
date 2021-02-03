@@ -39,7 +39,7 @@ public class TransactionController {
 	 public Transaction getTransaction(@PathVariable int TransactionId){
 		 
 		 try {
-	           Transaction transaction1=TransactionService.getTransactionService(TransactionId);
+	           Transaction transaction1=transactionservice.getTransactionService(TransactionId);
 	           return transaction1;
 	        }
 	        catch (Exception e){
@@ -52,7 +52,7 @@ public class TransactionController {
 	 @ResponseBody
 	 @CrossOrigin
 	 public List<Transaction> getAllTransactions(){
-		 List<Transaction> TransactionList = (List<Transaction>) TransactionService.getAllTransactionsService();
+		 List<Transaction> TransactionList = (List<Transaction>) transactionservice.getAllTransactionsService();
 	     return TransactionList;
 	 }
 	 
