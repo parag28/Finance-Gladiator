@@ -12,7 +12,6 @@ public class CardServiceImplementation implements CardService {
 	CardRepository cardRepository;
 	@Override
 	public String addCardService(Card card) {
-		// TODO Auto-generated method stub
 		try {
 			return cardRepository.addCard(card);
 		}catch(Exception e) {
@@ -22,10 +21,9 @@ public class CardServiceImplementation implements CardService {
 	}
 
 	@Override
-	public Card getCardService(int cardId) {
-		// TODO Auto-generated method stub
+	public Card getCardService(String userName) {
 		try {
-			return cardRepository.getCard(cardId);
+			return cardRepository.getCard(userName);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		      return null;
@@ -34,7 +32,6 @@ public class CardServiceImplementation implements CardService {
 
 	@Override
 	public String updateCardService(Card card) {
-		// TODO Auto-generated method stub
 		try {
 			return cardRepository.updateCard(card);
 		}catch(Exception e) {

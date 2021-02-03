@@ -14,47 +14,39 @@ import com.development.demo.layer2.ProductRepository;
 import com.development.demo.layer2.TransactionRepository;
 
 @Service
-public class TransactionServiceImplementation implements TransactionRepository{
-    @Autowired 
-    TransactionRepository transactionrepository;
-	
-    @Override
-    public String addTransaction(Transaction transaction) {
-    	try {
-    		transactionrepository.addTransaction(transaction);
-    	}
-    	catch(Exception e){
-        	System.out.println(e.getStackTrace());
-        }
-	 return "Success";
+public class TransactionServiceImplementation implements TransactionService{
+  @Autowired
+  TransactionRepository transactionRepository;
+  @Override
+  public String addTransactionService(Transaction transaction) {
+    try{
+      return transactionRepository.addTransaction(transaction);
     }
-
-   // @Override
-	public Transaction getTransaction(int TransactionId) {
-    	Transaction transaction1=null;
-		 try{
-			 transaction1=TransactionRepository.getTransaction(TransactionId);
-            	
-		 	}
-		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
-		 	}
-		 	return transaction1;
-	 }
-
-    @Override
-    public List<Transaction> getAllTransactions() {
-		// TODO Auto-generated method stub
-		 List<Transaction> transaction1=null;
-		 try{
-			 transaction1=transactionrepository.getAllTransactions();
-             
-		 	}
-		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
-		 	}
-		 	return transaction1;
+    catch(Exception e){
+      System.out.println(e.getMessage());
+      return null;
     }
+  }
 
+  @Override
+  public Transaction getTransactionService(int transactionId) {
+    try{
+      return transactionRepository.getTransaction(transactionId);
+    }
+    catch(Exception e){
+      System.out.println(e.getMessage());
+      return null;
+    }
+  }
 
+  @Override
+  public List<Transaction> getAllTransactionsService() {
+    try {
+      return transactionRepository.getAllTransactions();
+    }
+    catch(Exception e){
+      System.out.println(e.getMessage());
+      return null;
+    }
+  }
 }

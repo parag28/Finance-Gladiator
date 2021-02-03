@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.development.demo.layer1.Transaction;
 
-public interface TransactionsService  {
-	public String addTransaction(Transaction transaction);
-	Transaction getTransaction(int TransactionId);
-	public List<Transaction> getAllTransactions();
+public interface TransactionService  {
+	public String addTransactionService(Transaction transaction);
+	Transaction getTransactionService(int TransactionId);
+	public List<Transaction> getAllTransactionsService();
 }

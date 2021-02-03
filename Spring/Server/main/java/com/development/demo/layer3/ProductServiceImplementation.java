@@ -14,72 +14,63 @@ public class ProductServiceImplementation  implements ProductService{
 	ProductRepository productrepository;
 
 	@Override
-	public String addProduct(Product product) {
-		// TODO Auto-generated method stub
+	public String addProductService(Product product) {
 		 try{
-	             productrepository.addProduct(product);
-	             
-	        }
-	        catch(Exception e){
-	        	System.out.println(e.getStackTrace());
-	        }
+		      productrepository.addProduct(product);
+		 }
+      catch(Exception e){
+        System.out.println(e.getMessage());
+      }
 		 return "AddProductService successful";
 	}
 
 	@Override
-	public String updateProduct(Product product) {
-		// TODO Auto-generated method stub
+	public String updateProductService(Product product) {
 		 try{
-			 
 			 	productrepository.updateProduct(product);
-			 			 	}
+		 }
 		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
-        	}
+		 		System.out.println(e.getMessage());
+		 }
 		 return "UpdateProductService successful";
 
 	}
-	
+
 	@Override
-	public String deleteProduct(int productId) {
-		// TODO Auto-generated method stub
+	public String deleteProductService(int productId) {
 		 try{
-             	productrepository.deleteProduct(productId);
-             	
+		   productrepository.deleteProduct(productId);
+       return "DeleteProductService successful";
 		 	}
 		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
-        	}
-		 return "DeleteProductService successful";
+		 		System.out.println(e.getMessage());
+		 		return null;
+		 }
+
 	}
-	
+
 
 	@Override
-	public Product getProduct(int productId) {
-		// TODO Auto-generated method stub
-        Product product1=null;
+	public Product getProductService(int productId) {
 		 try{
-             	product1=productrepository.getProduct(productId);
-             	
+		   return productrepository.getProduct(productId);
 		 	}
 		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
+		 		System.out.println(e.getMessage());
+		 		return null;
 		 	}
-		 	return product1;
+
 	 }
-	
+
 
 	@Override
-	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		 List<Product> product1=null;
-		 try{
-			 product1=productrepository.getAllProducts();
-             
-		 	}
-		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
-		 	}
-		 	return product1;
-	}	 
+	public List<Product> getAllProductsService() {
+   try{
+     return productrepository.getAllProducts();
+    }
+    catch(Exception e){
+      System.out.println(e.getMessage());
+      return null;
+    }
+	}
 }

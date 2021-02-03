@@ -14,7 +14,7 @@ public class LoginServiceImplementation implements LoginService{
   public String addLoginService(Login login) {
   try {
     String message=loginRepository.addLogin(login);
-    System.out.println(message);//debug purpose
+    System.out.println(message);
     return "success";
   }
   catch (Exception e){

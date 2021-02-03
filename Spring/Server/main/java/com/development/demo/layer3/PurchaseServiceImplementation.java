@@ -16,45 +16,41 @@ import com.development.demo.layer2.PurchaseRepository;
 import com.development.demo.layer2.TransactionRepository;
 
 @Service
-public class PurchaseServiceImplementation implements PurchaseRepository{
-    @Autowired 
-    PurchaseRepository purchaserepository;
-	
+public class PurchaseServiceImplementation implements PurchaseService{
+    @Autowired
+    PurchaseRepository purchaseRepository;
+
     @Override
-    public String addPurchase(Purchase purchase) {
+    public String addPurchaseService(Purchase purchase) {
     	try{
-            purchaserepository.addPurchase(purchase);
-            
+    	  purchaseRepository.addPurchase(purchase);
+        return "Success";
        }
        catch(Exception e){
-       	System.out.println(e.getStackTrace());
+       	System.out.println(e.getMessage());
+       	return "fail";
        }
-	 return "Success";
     }
 
     @Override
-    public Purchase getPurchase(int purchaseId) {
-       Purchase purchase1=null;
+    public Purchase getPurchaseService(int purchaseId) {
 		 try{
-			 purchase1=purchaserepository.getPurchase(purchaseId);
-          	
+			 return purchaseRepository.getPurchase(purchaseId);
 		 	}
 		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
+		 		System.out.println(e.getMessage());
+		 		return null;
 		 	}
-		 	return purchase1;
     }
 
     @Override
-    public List<Purchase> getAllPurchases() {
-    	List<Purchase> purchase1=null;
+    public List<Purchase> getAllPurchasesService() {
 		 try{
-			 purchase1=purchaserepository.getAllPurchases();
-            
-		 	}
-		 	catch(Exception e){
-		 		System.out.println(e.getStackTrace());
-		 	}
-		 	return purchase1;
-	}	 
+			 return purchaseRepository.getAllPurchases();
+		 }
+		 	catch(Exception e) {
+        System.out.println(e.getMessage());
+        return null;
+      }
+	}
  }
