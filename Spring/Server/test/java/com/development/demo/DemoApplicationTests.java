@@ -168,6 +168,7 @@ class DemoApplicationTests {
   }
 
 	
+
 	@Test
 	public void AddProductServiceTest() {
 		Product product1 = new Product();
@@ -176,20 +177,20 @@ class DemoApplicationTests {
 	    product1.setProductpicture(".jpg");
 	    product1.setProductinformation("new latest iphone");
 	    product1.setNumberofproducts(5);
-		productService.addProduct(product1);
+		String s1=productService.addProductService(product1);
 		
 		
 	}
 	@Test
 	public void GetProductServiceTest() {
-		Product p1=productService.getProduct(2);
+		Product p1=productService.getProductService(2);
 		System.out.println("Product name"+p1.getProductname());
 		System.out.println("product info"+p1.getProductinformation());
 	}
 	@Test
 	public void GetAllProductServiceTest() {
 		List<Product> productlist=new ArrayList<Product>();
-		productlist=productService.getAllProducts();
+		productlist=productService.getAllProductsService();
 		for(Product product:productlist) {
 			System.out.println("Product name"+product.getProductname());
 			System.out.println("product info"+product.getProductinformation());
@@ -198,16 +199,16 @@ class DemoApplicationTests {
 	}
 	@Test
 	public void UpdateProductServiceTest() {
-		Product p1=productService.getProduct(2);
+		Product p1=productService.getProductService(2);
 		p1.setProductinformation("new innovative and at low price");
-		productService.updateProduct(p1);
+		productService.updateProductService(p1);
 		System.out.println("Product name"+p1.getProductname());
 		System.out.println("product info"+p1.getProductinformation());
 
 	}
 	@Test
 	public void DeleteProductServiceTest() {
-		productService.deleteProduct(3);
+		productService.deleteProductService(3);
 	}
 	
 }
