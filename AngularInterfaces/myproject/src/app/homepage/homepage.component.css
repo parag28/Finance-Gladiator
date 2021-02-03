@@ -1,0 +1,127 @@
+/* card styling */
+.mb-2{hovertransform: scale(1.05);box-shadow: 10px 10px 15px rgba(0,0,0,0.3);}
+/* header style */
+.header {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #eee;
+
+  height: 60vh;
+  background-image:
+    linear-gradient(to bottom,
+    rgba(128, 90, 203, 0.83),
+    rgba(179, 136, 255, 0.4)),
+
+    url('https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')	;
+
+  /* url('https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg'); */
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  /* background-color:#b388ff; */
+  clip-path: polygon(0 0, 100% 0, 100% 40vh, 0 100%);
+}
+
+.brand-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.brand { font-size: 10px; }
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 30px;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 70px;
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+.heading-primary-sub {
+  /* display: block; */
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 7.4px;
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+  font-size: 14px;
+}
+
+/* circular card */
+.block {
+  /* border: 1px solid red; */
+  text-align: center;
+  align-content: center;
+  vertical-align: middle;
+}
+.circle {
+  background: #805acb;
+  border-radius: 400px;
+  color: white;
+  height: 300px;
+  font-weight: bold;
+  width: 400px;
+  display: table;
+  margin: 20px auto;
+}
+.circ{
+  vertical-align: middle;
+  margin-top: 45px;
+  border: 2px solid white;
+}
+
+/* corousel controller */
+.carousel-control-prev-icon{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23805acb' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23805acb' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+/* card button */
+.btnc{
+  background-color: #805acb;
+  color: white;
+}

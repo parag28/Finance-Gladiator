@@ -9,6 +9,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {AdminpageComponent} from './adminpage/adminpage.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import {AdminpageComponent} from './adminpage/adminpage.component';
         ChangePasswordComponent,
         LoginComponent,
         RegisterComponent,
-        AdminpageComponent
+        AdminpageComponent,
+        HomepageComponent
     ],
   imports: [
     BrowserModule,
