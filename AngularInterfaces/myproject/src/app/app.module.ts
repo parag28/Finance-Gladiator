@@ -8,16 +8,18 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {AdminpageComponent} from './adminpage/adminpage.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductinfoComponent,
-    ForgotPasswordComponent,
-    ChangePasswordComponent,
-    LoginComponent,
-    RegisterComponent
-  ],
+    declarations: [
+        AppComponent,
+        ProductinfoComponent,
+        ForgotPasswordComponent,
+        ChangePasswordComponent,
+        LoginComponent,
+        RegisterComponent,
+        AdminpageComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule
