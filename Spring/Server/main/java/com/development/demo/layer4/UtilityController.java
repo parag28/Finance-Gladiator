@@ -1,15 +1,16 @@
 package com.development.demo.layer4;
 
+import com.development.demo.DTO.PurchaseProductDTO;
 import com.development.demo.DTO.UserInitializeDTO;
-import com.development.demo.layer1.Card;
-import com.development.demo.layer1.Login;
-import com.development.demo.layer1.User;
-import com.development.demo.layer3.CardService;
-import com.development.demo.layer3.LoginService;
-import com.development.demo.layer3.UserService;
+import com.development.demo.layer1.*;
+import com.development.demo.layer3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 @RestController
@@ -24,9 +25,22 @@ public class UtilityController {
   @Autowired
   CardService cardService;
 
+  @Autowired
+  ProductService productService;
+
+  @Autowired
+  PurchaseService purchaseService;
+
+
+  @Autowired
+  TransactionService transactionService;
+
+  @Autowired
+  EmiService emiService;
+
   private long generateCardNumber(){
     Random r = new Random( System.currentTimeMillis() );
-    return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
+    return ((1 + r.nextInt(2)) * 100000 + r.nextInt(100000));
   }
   @PostMapping(path = "/initializeUser")
   @ResponseBody
@@ -42,6 +56,7 @@ public class UtilityController {
     user.setIfsccode(userInitializeDTO.getIfscCode());
     user.setAddress(userInitializeDTO.getAddress());
     String message = userService.addUserService(user);
+    System.out.println("User service message"+message);
     if(message.contains("fail")){
       return "fail";
     }
@@ -53,7 +68,7 @@ public class UtilityController {
     login.setUserApprovalStatus(0);
     login.setUsername(user.getUsername());
     login.setPassword(password);
-    int creditRemaining = 0;
+    int creditRemaining;
     if(cardType==1){
       creditRemaining=10000;
     }
@@ -64,6 +79,7 @@ public class UtilityController {
     card.setCardnumber(generateCardNumber());
     card.setCreditremaining(creditRemaining);
     card.setCardtype(cardType);
+    card.setValidupto(validUpto);
     card.setUsername(user.getUsername());
     message = cardService.addCardService(card);
     if(message.contains("fail")){
@@ -73,6 +89,60 @@ public class UtilityController {
     if(message.contains("fail")){
       return "fail";
     }
+    return "success";
+  }
+  public String purchaseProduct(@RequestBody PurchaseProductDTO purchaseProductDTO){
+    int numberOfEmis = purchaseProductDTO.getNumberOfEmis();
+    int productId = purchaseProductDTO.getProductId();
+    String userName = purchaseProductDTO.getUserName();
+    int quantity = purchaseProductDTO.getQuantity();
+
+    Purchase purchase = new Purchase();
+    Date date = Calendar.getInstance().getTime();
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String strDate = dateFormat.format(date);
+    purchase.setPurchasedate(strDate);
+    purchase.setUser(userService.getUserService(userName));
+    purchase.setProduct(productService.getProductService(productId));
+    String message = purchaseService.addPurchaseService(purchase);
+    System.out.println(message);
+    Transaction transaction = new Transaction();
+    transaction.setUser(userService.getUserService(userName));
+    transaction.setProduct(productService.getProductService(productId));
+
+    /*10 % is first month and the rest is given to EMIS distributed over the number of months*/
+    /*
+    * Address the credit unavailable condition
+    * */
+    int transactionAmount ;
+    int totalCost = productService.getProductService(productId).getProductprice()*quantity;
+    transactionAmount = totalCost/10;
+    int emiAmount = ((totalCost/10)*9)/numberOfEmis;
+    transaction.setTransactionamount(transactionAmount);
+    transaction.setTransactionstatus(1);
+    message = transactionService.addTransactionService(transaction);
+    System.out.println(message);
+    //message for debugging and adding further conditions
+    //if message is something return something kind
+
+    Product product = productService.getProductService(productId);
+    product.setNumberofproducts(product.getNumberofproducts()-quantity);
+    message = productService.updateProductService(product);
+    System.out.println(message);
+
+    Card card = cardService.getCardService(userName);
+    card.setCreditremaining(card.getCreditremaining()-totalCost+transactionAmount);
+    cardService.updateCardService(card);
+
+    Emi emi = new Emi();
+    emi.setEmidate(strDate);
+    emi.setEmispaid(1);
+    emi.setRemainingemis(numberOfEmis);
+    emi.setMonthlycharge(emiAmount);
+    emi.setUser(userService.getUserService(userName));
+    emi.setProduct(productService.getProductService(productId));
+    message = emiService.addEMIService(emi);
+    System.out.println(message);
     return "success";
   }
 }
