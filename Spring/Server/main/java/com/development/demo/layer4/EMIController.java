@@ -17,7 +17,7 @@ import com.development.demo.layer3.EmiService;
 @RestController
 @CrossOrigin
 public class EMIController {
-	
+
 	@Autowired
 	EmiService emiService;
 	@GetMapping(value="/getEMI/{EMIId}")
@@ -31,30 +31,29 @@ public class EMIController {
 			System.out.println("Exception");
 			return null;
 		}
-		
+
 	}
-	
+
 	@GetMapping("/getAllEMIs")
 	@ResponseBody
 	@CrossOrigin
 	public List<Emi>getAllEMIs(){
-		List<Emi> emiList= (List<Emi>)emiService.getAllEMIsService();
-		return emiList;
+    return emiService.getAllEMIsService();
 	}
-	
+
 	@PostMapping(path="/addEMI")
 	@ResponseBody
 	@CrossOrigin
 	public String addEMI(@RequestBody Emi emi)
 	{
 		try {
-			emiService.addEMIService(emi);
-			return "success";
+			return emiService.addEMIService(emi);
 		}catch(Exception e) {
-			return "fail";
+      System.out.println(e.getMessage());
+			return e.getMessage();
 		}
 	}
-	
+
 	@PostMapping(path="/updateEMI")
 	@ResponseBody
 	@CrossOrigin
@@ -66,5 +65,4 @@ public class EMIController {
 			return "fail";
 		}
 	}
-	
 }

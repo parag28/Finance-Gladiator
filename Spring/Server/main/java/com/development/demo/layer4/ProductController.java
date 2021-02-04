@@ -21,15 +21,14 @@ public class ProductController {
 
 	@Autowired
     ProductService productService;
-	
+
 	@GetMapping("/getAllProducts")
-    @ResponseBody
-    @CrossOrigin
-    public List<Product> getAllProducts(){
-        List<Product> productList= (List<Product>)productService.getAllProductsService();
-		return productList;
-    }
-	
+  @ResponseBody
+  @CrossOrigin
+  public List<Product> getAllProducts(){
+      return productService.getAllProductsService();
+  }
+
 	@GetMapping(value = "/getProduct/{productId}")
 	@ResponseBody
 	@CrossOrigin
@@ -37,12 +36,13 @@ public class ProductController {
 	{
 		try {
 			return productService.getProductService(productId);
-		}catch(Exception e) {
+		}
+		catch(Exception e) {
 			System.out.println("Exception");
 			return null;
-		}	
+		}
 	}
-	
+
 	@PostMapping(path="/updateProduct")
 	@ResponseBody
 	@CrossOrigin
@@ -50,24 +50,25 @@ public class ProductController {
 	{
 		try {
 			return productService.updateProductService(product);
-		}catch(Exception e) {
+		}
+		catch(Exception e) {
 			return "fail";
 		}
 	}
-	
+
 	@PostMapping(path="/addProduct")
 	@ResponseBody
 	@CrossOrigin
 	public String addProduct(@RequestBody Product product)
 	{
 		try {
-			productService.addProductService(product);
-			return "success";
-		}catch(Exception e) {
+			return productService.addProductService(product);
+		}
+		catch(Exception e) {
 			return "fail";
 		}
 	}
-	
+
 	 @DeleteMapping(value = "/deleteProduct/{id}")
 	 @ResponseBody
 	 @CrossOrigin
