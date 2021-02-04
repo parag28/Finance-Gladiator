@@ -26,7 +26,7 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
     FormsModule
   ],
   providers: [],

@@ -142,7 +142,7 @@
               </div>
               <div class="col-sm-6 pb-3">
                 <label for="exampleConfPass">Confirm Password</label>
-                <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" [(ngModel)]="user.confirm_password" (change)="checkPassword()" required >
+                <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" [(ngModel)]="user.confirm_password" (change)="checkPassword(user.confirm_password)" required >
                 <div *ngIf="!isPassEqual" >Password is not matching, please re-enter!</div>
               </div>
 
