@@ -211,4 +211,115 @@ class DemoApplicationTests {
 		productService.deleteProductService(3);
 	}
 	
+	@Test
+	public void AddProductServiceTest() {
+		Product product1 = new Product();
+	    product1.setProductname("HP Pavillion 4");
+	    product1.setProductprice(70000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1575024357670-2b5164f470c3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+	    product1.setProductinformation("HP Pavilion is a line of consumer-oriented laptop and desktop computers produced by HP Inc.It was introduced in 1995 by erstwhile Hewlett-Packard.");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest2() {
+		Product product1 = new Product();
+	    product1.setProductname("Canon EOS T6");
+	    product1.setProductprice(60000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1492850298657-e81006f7a54c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80");
+	    product1.setProductinformation("Canon EOS (Electro-Optical System) is an autofocus single-lens reflex camera (SLR) and mirrorless camera series produced by Canon Inc.");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest3() {
+		Product product1 = new Product();
+	    product1.setProductname("iPhone 6+");
+	    product1.setProductprice(20000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1510878933023-e2e2e3942fb0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80");
+	    product1.setProductinformation("The iPhone 6 and 6 Plus include larger 4.7 and 5.5 inches (120 and 140 mm) displays,a faster processor, upgraded cameras, improved LTE and Wi-Fi connectivity");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest4() {
+		Product product1 = new Product();
+	    product1.setProductname("Dining Table");
+	    product1.setProductprice(30000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1565320690707-1d3d10541559?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+	    product1.setProductinformation("A beautiful minimalistic dining table designed by Randy Fath. It fits in the small area also.");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest5() {
+		Product product1 = new Product();
+	    product1.setProductname("Mini Bookshelf");
+	    product1.setProductprice(25000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1611486212557-88be5ff6f941?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+	    product1.setProductinformation("Beautifully designed minimalistic book shelf which can store 10 books at a time and it's top can be used as tea-poy.");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest6() {
+		Product product1 = new Product();
+	    product1.setProductname("Sofa");
+	    product1.setProductprice(40000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1484101403633-562f891dc89a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80");
+	    product1.setProductinformation("Rich sofa design by kernado janpi, gives decent look to the living room. It has wooden built at the base.");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest7() {
+		Product product1 = new Product();
+	    product1.setProductname("King's Cooker");
+	    product1.setProductprice(5000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1584990347955-2ec0431a6e8f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+	    product1.setProductinformation("King's cooker comes in 4+1 set which consists of 1 cooker along with 2 Pans and other utensils.It has aluminium finish with 2 year warranty");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+
+	@Test
+	public void AddProductServiceTest8() {
+		Product product1 = new Product();
+	    product1.setProductname("Prime's Vending Machine");
+	    product1.setProductprice(10000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1588931196804-75b9cb0cd2a1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+	    product1.setProductinformation("It is an automated vending machine which is having a electric as welll as battery support.It has specific settings for each items individually, Highly recommended");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+	@Test
+	public void AddProductServiceTest9() {
+		Product product1 = new Product();
+	    product1.setProductname("Surya's Stove");
+	    product1.setProductprice(9000);
+	    product1.setProductpicture("https://images.unsplash.com/photo-1527195575508-5b138d14a35b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80");
+	    product1.setProductinformation("Introducing Surya's Deluxe Glass tops GTD 02 SS,Heat Resistant Gas stove, with 2 Year Warranty on Full Product. Body Material: Glass, Stainless Steel, Easy to clean.");
+	    product1.setNumberofproducts(50);
+		String s1=productService.addProductService(product1);
+		
+		
+	}
+
+	
 }
