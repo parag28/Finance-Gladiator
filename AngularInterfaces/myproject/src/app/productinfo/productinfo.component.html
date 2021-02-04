@@ -10,16 +10,15 @@
 </nav>
 <div class="container ">
   <div class="float-left" style="margin-right: 10px">
-    <img style="height: 350px;width: 600px; margin-top: 20px; box-shadow: 10px 10px 5px grey;" src="https://images.unsplash.com/photo-1565320690707-1d3d10541559?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+    <img style="height: 350px;width: 600px; margin-top: 20px; box-shadow: 10px 10px 5px grey;" src="{{product.productpicture}}"
          alt="f">
   </div>
   <div class="text-center" style="margin-top: 50px;margin-left: 150px;">
-    <p><b style="font-size: larger;">Premium Dining table </b> </p>
+    <p><b style="font-size: larger;">{{product.productname}} </b> </p>
     <p><b style="font-size: larger;">Product Details </b> </p>
-    <p style="text-align: justify; margin-left: 15px;"> A dining table provides a place to gather at the end of the day or to celebrate during special occasions. As such, it's the focal point of any dining room. We define the characteristics of four main styles of kitchen and dining tables to make
-      your search for the perfect table easier.</p>
+    <p style="text-align: justify; margin-left: 15px;"> {{product.productinformation}}</p>
 
-    <h3 style="text-align: left;margin-left: 60%">Cost <span class="badge badge-warning">$250</span></h3>
+    <h3 style="text-align: left;margin-left: 60%">Cost <span class="badge badge-warning">{{product.productprice}}</span></h3>
     <h4 style="text-align: left;margin-left: 60%">EMI Period <button type="button" class="btn btn-info">  3 Months</button></h4>
     <h4 style="text-align: left;margin-left: 60%">EMI STARTING  $70 /Month</h4>
 

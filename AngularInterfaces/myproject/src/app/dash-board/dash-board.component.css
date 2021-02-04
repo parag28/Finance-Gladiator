@@ -1,34 +1,52 @@
-h1{
-    text-align: center;
+dots {
+  background:
+    radial-gradient(#4cc9c8 20%, transparent 19%),
+    radial-gradient(#fa001a 20%, transparent 19%),
+    transparent;
+  background-size: 6px 6px;
+  background-position: 0 0, 3px 3px;
 }
-.carddetails{
-    align-content: center;
-    margin-left: 38%;
-    border-style: solid;
-    margin-right: 40%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 5px;
-    font-size: larger;
+
+.card-back {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  display: grid;
+  font-family: 'Trebuchet MS', sans-serif;
+  height: 200px;
+  margin: 20px auto;
+  width: 350px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 }
-.firstline{
-    color: red;
-    text-align: right;
+
+.yellow {
+  background-color: #f1ef1c;
+  grid-column: 1 / span 9;
+  grid-row: 1 / span 3;
 }
-.lastline{
-    text-align: center;
-    background-color: green;
+
+.top.dots {
+  color:#4cc9c8;
+  grid-column: 8 / span 6;
+  grid-row: 2 / span 3;
 }
-.border1{
-    border:1px solid black;
-    border-collapse: collapse;
+
+.personal-info {
+  grid-column: 2 / span 6;
+  grid-row: 5 / span 6;
+
 }
-table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+.personal-info p{
+  font-size: 10px;
+}
+.bottom.dots {
+  color: #4cc9c8;
+  grid-column: 1 / span 8;
+  grid-row: 11 / span 2;
+  z-index: 2;
+}
+
+.pink {
+  background-color: #fa001a;
+  grid-column: 8 / span 5;
+  grid-row: 10 / span 3;
+}

@@ -19,7 +19,7 @@ import com.development.demo.layer3.TransactionService;
 public class TransactionController {
 	@Autowired
 	TransactionService transactionservice;
-	
+
 	@PostMapping(path = "/addTransaction")
     @ResponseBody
     @CrossOrigin
@@ -32,29 +32,30 @@ public class TransactionController {
             return "fail";
         }
     }
-	
-	 @GetMapping(value = "/getTransaction/{TransactionId}")
+
+	 @GetMapping(value = "/getTransaction/{transactionId}")
 	 @ResponseBody
 	 @CrossOrigin
-	 public Transaction getTransaction(@PathVariable int TransactionId){
-		 
-		 try {
-	           Transaction transaction1=transactionservice.getTransactionService(TransactionId);
-	           return transaction1;
-	        }
-	        catch (Exception e){
-	        	 return null;
-	        }
-		 
+	 public Transaction getTransaction(@PathVariable int transactionId){
 
+		 try {
+		   return transactionservice.getTransactionService(transactionId);
+		 }
+      catch (Exception e){
+       return null;
+      }
 	 }
 	 @GetMapping("/getAllTransactions")
 	 @ResponseBody
 	 @CrossOrigin
 	 public List<Transaction> getAllTransactions(){
-		 List<Transaction> TransactionList = (List<Transaction>) transactionservice.getAllTransactionsService();
-	     return TransactionList;
+	  try{
+      return transactionservice.getAllTransactionsService();
+    }
+	  catch (Exception e){
+      System.out.println("Encountered Exception");
+      return null;
+    }
 	 }
-	 
 
-	 } 
+	 }

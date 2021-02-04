@@ -11,6 +11,11 @@ import { RegisterComponent } from './register/register.component';
 import {AdminpageComponent} from './adminpage/adminpage.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
+import {VerifyComponent} from './verify/verify.component';
+import {ProductlistComponent} from './productlist/productlist.component';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     declarations: [
         AppComponent,
@@ -21,11 +26,17 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
         RegisterComponent,
         AdminpageComponent,
         HomepageComponent,
-        DashBoardComponent
+        DashBoardComponent,
+        VerifyComponent,
+        ProductlistComponent 
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

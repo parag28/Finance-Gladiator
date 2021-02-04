@@ -19,7 +19,7 @@
   </nav>
   <!--// NAVBAR ENDs -->
 
-  <form class="" action="login.html" method="post">
+  <form class="" action="login.html" method="post" ngNativeValidate>
     <div class="row justify-content-center">
       <div class="col-md-10 offset-md-1">
         <span class="anchor" id="formComplex"></span>
@@ -33,26 +33,26 @@
             <div class="row mt-4">
               <div class="col-sm-5 pb-3">
                 <label for="fname">Full Name</label>
-                <input class="form-control" id="fname" placeholder="Enter Full Name" type="text" required>
+                <input class="form-control" name="fullname" id="fname" placeholder="Enter Full Name" type="text" [(ngModel)]="user.fullname" required>
               </div>
               <div class="col-sm-3 pb-3">
                 <label for="dob">Date of birth</label>
-                <input class="form-control" id="dob" placeholder="" type="date" required>
+                <input class="form-control" id="dob" name="dob" placeholder="" type="date" min="1961-01-01" max="2000-12-31" [(ngModel)]="user.dob" required>
               </div>
               <div class="col-sm-4 pb-3">
                 <label for="contact">Phone No.</label>
                 <div class="input-group">
-                  <input class="form-control" id="contact" placeholder="Enter Mobile Number" type="text" pattern="[0-9]{10}" required>
+                  <input class="form-control" id="contact" name="phoneno" placeholder="Enter Mobile Number" type="text" pattern="[0-9]{10}" [(ngModel)]="user.phoneno" required>
                 </div>
               </div>
               <div class="col-sm-6 pb-3">
                 <label for="exampleEmail">Email</label>
-                <input class="form-control" placeholder="xxxx@xxx.xxx" id="exampleEmail" type="email" required>
+                <input class="form-control" placeholder="xxxx@xxx.xxx" name="email" id="exampleEmail" type="email" [(ngModel)]="user.email" required>
               </div>
               <!-- ------------------------------->
               <div class="col-sm-3 pb-3">
                 <label for="exampleBank">Select Bank</label>
-                <select class="form-control custom-select" id="exampleBank" required>
+                <select class="form-control custom-select" name="bankname" id="exampleBank"  required>
                   <option class="text-white bg-warning">
                     Select a Bank
                   </option>
@@ -123,40 +123,43 @@
               </div>
               <div class="col-sm-3 pb-3">
                 <label for="exampleAc">Account Number</label>
-                <input class="form-control" placeholder="Enter Account number" id="exampleAc" type="number" required>
+                <input class="form-control" placeholder="6 digit Ac.no(eg.123456)" name="accno" id="exampleAc" type="text" pattern="[0-9]{6}" [(ngModel)]="user.accountno" required>
               </div>
               <!-- - ---------------- -->
               <div class="col-sm-6 pb-3">
-                <label for="exampleUsername">Userame</label>
-                <input class="form-control" placeholder="Create Username" id="exampleUsername" type="text" required>
+                <label for="exampleUsername">Username</label>
+                <input class="form-control" placeholder="Create Username" name="username" id="exampleUsername" type="text" [(ngModel)]="user.username" required>
               </div>
               <div class="col-sm-6 pb-3">
                 <label for="exampleIfsc">IFSC Code</label>
-                <input class="form-control" id="exampleIfsc" placeholder="Enter IFSC Code" type="text" required>
+                <input class="form-control" id="exampleIfsc" name="ifsc" placeholder="eg.SBIN0123456" type="text" pattern="^[A-Z]{4}0[A-Z0-9]{6}$" [(ngModel)]="user.ifsc" required>
               </div>
+
+
               <div class="col-sm-6 pb-3">
                 <label for="examplePass">Password</label>
-                <input class="form-control" id="examplePass" placeholder="Enter Password" type="password"required>
+                <input class="form-control" name="password" id="password" minlength="4" placeholder="Enter Password(min. length 4)" type="password" [(ngModel)]="user.password"  required>
               </div>
               <div class="col-sm-6 pb-3">
                 <label for="exampleConfPass">Confirm Password</label>
-                <input class="form-control" id="exampleConfPass" placeholder="Confirm Password" type="password" required>
+                <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" [(ngModel)]="user.confirm_password" (change)="checkPassword(user.confirm_password)" required >
+                <div *ngIf="!isPassEqual" >Password is not matching, please re-enter!</div>
               </div>
 
               <div class="col-md-6 pb-3">
                 <label for="exampleAddress">Address</label>
-                <textarea class="form-control" id="exampleAddress" rows="2" required></textarea>
+                <textarea class="form-control" name="address" id="exampleAddress" rows="2"  required></textarea>
                 <small class="text-muted">Permanent Address</small>
               </div>
               <div class="col-md-4 pb-3 ml-5 ">
                 <label for="exampleCardType">Card Type</label><br>
                 <div class="btn-group" data-toggle="buttons">
                   <label class="btn btn-secondary active">
-                    <input autocomplete="off" checked id="gold" name="options" type="radio" required>
+                    <input autocomplete="off" name="gold" checked id="gold" name="options" type="radio" required>
                     Gold
                   </label>
                   <label class="btn btn-secondary">
-                    <input autocomplete="off" id="platinum" name="options" type="radio">
+                    <input autocomplete="off" name="platinum" id="platinum" name="options" type="radio">
                     Platinum
                   </label>
 
@@ -170,7 +173,7 @@
             </div>
             <div class="float-right">
               <input class="btn btn-secondary" type="reset" value="Reset">
-              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;" type="submit" value="Register">
+              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;" type="submit" value="Register"/>
             </div>
           </div>
         </div><!--/card-->
@@ -180,3 +183,4 @@
   </form>
 
 </div>
+

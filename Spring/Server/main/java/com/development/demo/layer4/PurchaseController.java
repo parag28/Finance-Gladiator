@@ -18,43 +18,42 @@ import com.development.demo.layer3.PurchaseService;
 @CrossOrigin
 public class PurchaseController {
 	@Autowired
-	PurchaseService purchaseservice;
-	
+	PurchaseService purchaseService;
+
 	@PostMapping(path = "/addPurchase")
     @ResponseBody
     @CrossOrigin
     public String addPurchase(@RequestBody Purchase purchase){
         try {
-        	purchaseservice.addPurchaseService(purchase);
-            return "success";
+        	return purchaseService.addPurchaseService(purchase);
         }
         catch (Exception e){
             return "fail";
         }
     }
-	
-	 @GetMapping(value = "/getPurchase/{PurchaseId}")
+
+	 @GetMapping(value="/getPurchase/{PurchaseId}")
 	 @ResponseBody
 	 @CrossOrigin
-	 public Purchase getPurchase(@PathVariable int PurchaseId){
-		 
-		 try {
-			 Purchase purchase1=purchaseservice.getPurchaseService(PurchaseId);
-	           return purchase1;
-	        }
-	        catch (Exception e){
-	        	 return null;
-	        }
-		 
-
+	 public Purchase getPurchase(@PathVariable int purchaseId){
+       try {
+         return purchaseService.getPurchaseService(purchaseId);
+       }
+      catch (Exception e){
+        System.out.println(e.getMessage());
+         return null;
+      }
 	 }
 	 @GetMapping("/getAllPurchases")
 	 @ResponseBody
 	 @CrossOrigin
 	 public List<Purchase> getAllPurchases(){
-		 List<Purchase> PurchaseList = (List<Purchase>) purchaseservice.getAllPurchasesService();
-	     return PurchaseList;
-	 
-
-	 } 
+	  try {
+      return purchaseService.getAllPurchasesService();
+    }
+	  catch(Exception e){
+      System.out.println(e.getMessage());
+      return null;
+    }
+	 }
 }

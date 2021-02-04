@@ -16,49 +16,47 @@ import com.development.demo.layer3.CardService;
 @CrossOrigin
 public class CardController {
 	@Autowired
-	CardService cardservice;
-	
+	CardService cardService;
+
 	@PostMapping(path = "/addCard")
     @ResponseBody
     @CrossOrigin
     public String addCard(@RequestBody Card card){
         try {
-        	cardservice.addCardService(card);
-            return "success";
+        	return cardService.addCardService(card);
         }
         catch (Exception e){
             return "fail";
         }
     }
-	
+
 	 @GetMapping(value = "/getCard/{username}")
 	 @ResponseBody
 	 @CrossOrigin
 	 public Card getCard(@PathVariable String username){
-		 
+
 		 try {
-			 Card card1=cardservice.getCardService(username);
-	           return card1;
-	        }
-	        catch (Exception e){
-	        	 return null;
-	        }
-		 
+			 return cardService.getCardService(username);
+		 }
+    catch (Exception e){
+       return null;
+    }
+
 
 	 }
 
-	 
+
 	 @PostMapping(path = "/updateCard")
 	 @ResponseBody
 	 @CrossOrigin
 	 public String updateLogin(@RequestBody Card card){
 		 try {
-			 cardservice.updateCardService(card);
-	            return "success";
+			  cardService.updateCardService(card);
+			  return "success";
 	     }
 	     catch (Exception e){
-	            return "fail";
+		    return "fail";
 	     }
 
-	 } 
+	 }
 }
