@@ -91,6 +91,9 @@ public class UtilityController {
     }
     return "success";
   }
+  @PostMapping(path = "/purchaseProduct")
+  @ResponseBody
+  @CrossOrigin
   public String purchaseProduct(@RequestBody PurchaseProductDTO purchaseProductDTO){
     int numberOfEmis = purchaseProductDTO.getNumberOfEmis();
     int productId = purchaseProductDTO.getProductId();
