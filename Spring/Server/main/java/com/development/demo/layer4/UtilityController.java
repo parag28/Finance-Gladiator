@@ -148,4 +148,34 @@ public class UtilityController {
     System.out.println(message);
     return "success";
   }
+
+  @GetMapping(value = "/payEmi/{emiId}")
+  @ResponseBody
+  @CrossOrigin
+  public String payEMI(@PathVariable int emiId){
+    Emi emi = emiService.getEMIService(emiId);
+    int transactionAmount = emi.getMonthlycharge();
+    Date date = Calendar.getInstance().getTime();
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String strDate = dateFormat.format(date);
+    Transaction transaction = new Transaction();
+    transaction.setUser(emi.getUser());
+    transaction.setProductquantity(0);
+    transaction.setProduct(emi.getProduct());
+    transaction.setTransactionstatus(1);
+    transaction.setTransactionamount(emi.getMonthlycharge());
+    String message = transactionService.addTransactionService(transaction);
+    System.out.println(message);
+    Card card = cardService.getCardService(emi.getUser().getUsername());
+    card.setCreditremaining(card.getCreditremaining()+transactionAmount);
+    message = cardService.updateCardService(card);
+    System.out.println(message);
+    //if remaining emis are less than zero, login in Angular
+
+    emi.setRemainingemis(emi.getRemainingemis()-1);
+    emi.setEmispaid(emi.getEmispaid()+1);
+    message = emiService.updateEMIService(emi);
+    System.out.println(message);
+    return "success";
+  }
 }
