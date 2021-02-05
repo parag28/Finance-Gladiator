@@ -18,8 +18,9 @@
     </div>
   </nav>
   <!--// NAVBAR ENDs -->
+  <!-- <form class="" action="login.html"  method="post" ngNativeValidate> -->
 
-  <form class="" action="login.html" method="post" ngNativeValidate>
+  <form class="" #userForm="ngForm"  ngNativeValidate>
     <div class="row justify-content-center">
       <div class="col-md-10 offset-md-1">
         <span class="anchor" id="formComplex"></span>
@@ -33,16 +34,16 @@
             <div class="row mt-4">
               <div class="col-sm-5 pb-3">
                 <label for="fname">Full Name</label>
-                <input class="form-control" name="fullname" id="fname" placeholder="Enter Full Name" type="text" [(ngModel)]="user.fullname" required>
+                <input class="form-control" name="userName" id="fname" placeholder="Enter Full Name" type="text" [(ngModel)]="user.name" required>
               </div>
               <div class="col-sm-3 pb-3">
                 <label for="dob">Date of birth</label>
-                <input class="form-control" id="dob" name="dob" placeholder="" type="date" min="1961-01-01" max="2000-12-31" [(ngModel)]="user.dob" required>
+                <input class="form-control" id="dateOfBirth" name="dob" placeholder="" type="date" min="1961-01-01" max="2000-12-31" [(ngModel)]="user.dateOfBirth" required>
               </div>
               <div class="col-sm-4 pb-3">
                 <label for="contact">Phone No.</label>
                 <div class="input-group">
-                  <input class="form-control" id="contact" name="phoneno" placeholder="Enter Mobile Number" type="text" pattern="[0-9]{10}" [(ngModel)]="user.phoneno" required>
+                  <input class="form-control" id="contact" name="phoneNumber" placeholder="Enter Mobile Number" type="text" pattern="[0-9]{10}" [(ngModel)]="user.phoneNumber" required>
                 </div>
               </div>
               <div class="col-sm-6 pb-3">
@@ -52,87 +53,24 @@
               <!-- ------------------------------->
               <div class="col-sm-3 pb-3">
                 <label for="exampleBank">Select Bank</label>
-                <select class="form-control custom-select" name="bankname" id="exampleBank"  required>
-                  <option class="text-white bg-warning">
-                    Select a Bank
-                  </option>
-                  <option value="BOM">
-                    Bank of Maharashtra
-                  </option>
-                  <option value="SBI">
-                    State Bank of India
-                  </option>
-                  <option value="UBI">
-                    Union Bank of India
-                  </option>
-                  <option value="RBL">
-                    RBL Bank
-                  </option>
-                  <option value="HDFC">
-                    HDFC Bank
-                  </option>
-                  <option value="ICICI">
-                    ICICI Bank
-                  </option>
-                  <option value="PNB">
-                    Punjab National Bank
-                  </option>
-                  <option value="MM">
-                    Metro multistate
-                  </option>
-                  <option value="AX">
-                    Axis Bank
-                  </option>
-                  <option value="FB">
-                    Federal Bank of India
-                  </option>
-                  <option value="AB">
-                    Allahabad Bank
-                  </option>
-                  <option value="BOB">
-                    Bank of Baroda
-                  </option>
-                  <option value="IDBI">
-                    IDBI Bank
-                  </option>
-                  <option value="CB">
-                    Canara Bank
-                  </option>
-                  <option value="CBI">
-                    Central Bank of India
-                  </option>
-                  <option value="APB">
-                    Andhra Bank
-                  </option>
-                  <option value="CB">
-                    Corporation Bank
-                  </option>
-                  <option value="KM">
-                    Kotak Mahindra
-                  </option>
-                  <option value="OBB">
-                    Oriental Bank of Commerce
-                  </option>
-                  <option value="BOI">
-                    Bank of India
-                  </option>
-                  <option value="YB">
-                    Yes Bank
+                <select class="form-control custom-select" name="bankName" id="exampleBank" [(ngModel)]="user.bankName" required>
+                  <option value="" disabled selected>Select Bank</option>
+                  <option  *ngFor="let b of bankNames" [ngValue]="b">
+                    {{b}}
                   </option>
                 </select>
               </div>
               <div class="col-sm-3 pb-3">
                 <label for="exampleAc">Account Number</label>
-                <input class="form-control" placeholder="6 digit Ac.no(eg.123456)" name="accno" id="exampleAc" type="text" pattern="[0-9]{6}" [(ngModel)]="user.accountno" required>
+                <input class="form-control" placeholder="6 digit Ac.no(eg.123456)" name="accountNumber" id="exampleAc" type="text" pattern="[0-9]{6}" [(ngModel)]="user.accountNumber" required>
               </div>
-              <!-- - ---------------- -->
               <div class="col-sm-6 pb-3">
                 <label for="exampleUsername">Username</label>
-                <input class="form-control" placeholder="Create Username" name="username" id="exampleUsername" type="text" [(ngModel)]="user.username" required>
+                <input class="form-control" placeholder="Create Username" name="userName" id="exampleUsername" type="text" [(ngModel)]="user.userName" required>
               </div>
               <div class="col-sm-6 pb-3">
                 <label for="exampleIfsc">IFSC Code</label>
-                <input class="form-control" id="exampleIfsc" name="ifsc" placeholder="eg.SBIN0123456" type="text" pattern="^[A-Z]{4}0[A-Z0-9]{6}$" [(ngModel)]="user.ifsc" required>
+                <input class="form-control" id="exampleIfsc" name="ifscCode" placeholder="eg.SBIN0123456" type="text" pattern="^[A-Z]{4}0[A-Z0-9]{6}$" [(ngModel)]="user.ifscCode" required>
               </div>
 
 
@@ -142,38 +80,47 @@
               </div>
               <div class="col-sm-6 pb-3">
                 <label for="exampleConfPass">Confirm Password</label>
-                <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" [(ngModel)]="user.confirm_password" (change)="checkPassword(user.confirm_password)" required >
+                <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" (change)="checkPassword()" [(ngModel)]="user.confirm_password"  required >
                 <div *ngIf="!isPassEqual" >Password is not matching, please re-enter!</div>
               </div>
 
               <div class="col-md-6 pb-3">
                 <label for="exampleAddress">Address</label>
-                <textarea class="form-control" name="address" id="exampleAddress" rows="2"  required></textarea>
+                <textarea class="form-control" name="address" id="exampleAddress" rows="2" [(ngModel)]="user.address"  required></textarea>
                 <small class="text-muted">Permanent Address</small>
               </div>
-              <div class="col-md-4 pb-3 ml-5 ">
-                <label for="exampleCardType">Card Type</label><br>
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-secondary active">
-                    <input autocomplete="off" name="gold" checked id="gold" name="options" type="radio" required>
-                    Gold
-                  </label>
-                  <label class="btn btn-secondary">
-                    <input autocomplete="off" name="platinum" id="platinum" name="options" type="radio">
-                    Platinum
-                  </label>
 
-                </div>
+               <div class="col-md-4 pb-3 ml-5 ">
+                <label for="exampleCardType">Card Type</label><br>
+                  <div class="btn-group">
+                    <label>
+                      <input type="radio"
+                             value="0"
+                             [checked]="user.cardType === 0"
+                             id="point1"
+                             (change)="onCardTypeSelectionChange(0)"
+                             name="cardtype">Gold
+                  </label>
+                  <label>
+                    <input type="radio"
+                           value="1"
+                           [checked]="user.cardType === 1"
+                           id="point2"
+                           (change)="onCardTypeSelectionChange(1)"
+                           name="cardtype">Platinum
+                  </label>
+                  </div>
               </div>
+
             </div>
           </div>
           <div class="card-footer">
             <div class="float-left">
-              <p>Already a Member? <a href="login.html">Login here</a></p>
+              <p>Already a Member? <a routerLink="/login">Login here</a></p>
             </div>
             <div class="float-right">
               <input class="btn btn-secondary" type="reset" value="Reset">
-              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;" type="submit" value="Register"/>
+              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;"(click)="onRegisterClick()" routerLink="/login" type="submit" value="Register"/>
             </div>
           </div>
         </div><!--/card-->
@@ -183,4 +130,3 @@
   </form>
 
 </div>
-
