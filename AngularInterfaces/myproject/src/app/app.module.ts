@@ -15,6 +15,9 @@ import {VerifyComponent} from './verify/verify.component';
 import {ProductlistComponent} from './productlist/productlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { EmisComponent } from './emis/emis.component';
+import { OrdersComponent } from './orders/orders.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,12 +30,14 @@ import {ReactiveFormsModule} from '@angular/forms';
         HomepageComponent,
         DashBoardComponent,
         VerifyComponent,
-        ProductlistComponent
+        ProductlistComponent,
+        EmisComponent,
+        OrdersComponent,
+        TransactionsComponent,
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

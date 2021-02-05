@@ -10,6 +10,9 @@ import {ForgotPasswordComponent} from './forgot-password/forgot-password.compone
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {AdminpageComponent} from './adminpage/adminpage.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
+import {EmisComponent} from './emis/emis.component';
+import {OrdersComponent} from './orders/orders.component';
+import {TransactionsComponent} from './transactions/transactions.component';
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'productinfo/:productid', component: ProductinfoComponent},
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'changepassword', component: ChangePasswordComponent},
   {path: 'adminhome', component: AdminpageComponent},
-  {path: 'userhome', component: DashBoardComponent}
+  {path: 'userhome', component: DashBoardComponent},
+  {path: 'emis', component: EmisComponent},
+  {path: 'orders', component: OrdersComponent},
+  {path: 'transactions', component: TransactionsComponent}
 ];
 
 @NgModule({

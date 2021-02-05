@@ -11,6 +11,7 @@ import {Router } from '@angular/router';
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit {
+  userName: string = localStorage.getItem("localVariableUserName");
   private subscription: Subscription;
   productList: Product[];
   productListDisplay: Product[][];
@@ -19,6 +20,7 @@ export class ProductlistComponent implements OnInit {
 
   constructor(private productService: ProductService, private router: Router ) { }
   ngOnInit(): void {
+
     this.subscription = this.productService.getAllProducts().subscribe((data: Product[]) => {
       this.productList = data;
       }, (err) => {
