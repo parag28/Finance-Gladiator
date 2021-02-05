@@ -65,13 +65,13 @@
           <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" href="#myCard" aria-expanded="false" aria-controls="page-dashboards">
             <a href="dashboard.html">
               <i class="feather icon-credit-card" ></i>
-              <span class="menu-title">My Card</span></a>
+              <button class="menu-title" (click)="navigate2()">My Card</button></a>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link wave-effect collapsed" data-parent="#sidebarCookie" data-toggle="collapse" href="#navPageLayouts" aria-expanded="false" aria-controls="page-layouts">
             <a href="#"><i class="feather icon-sidebar"></i>
-              <span class="menu-title">Products</span></a>
+              <button class="menu-title" (click)="navigate1()">Products</button></a>
             <!-- <i class="feather icon-chevron-down down-arrow"></i></a> -->
           </a>
         </li>
@@ -105,9 +105,9 @@
       <h4 style="margin-left: 15px;">Electronic Products</h4>
       <div class="container my-4">
         <div *ngIf="productList && productList.length"> 
-        <div *ngFor = "let p of productList">
-        <div class="row">
-          <div class="col-md-4">
+        <div *ngFor = "let p of productList;let i=index" [attr.data-index]="i">
+        <div class="row" >
+          <div class="col-md-8">
             <div class="card mb-2">
               <img class="card-img-top" src="{{p.productpicture}}" alt="Card image cap">
                   
@@ -115,9 +115,12 @@
                 <h4 class="card-title">{{p.productname}}</h4>
                 <p class="card-text">{{p.productinformation}}</p>
                 <button class="btn btnc" (click)="navigate(p.productid)">Buy Now</button>
+                <p>{{i}}</p>
               </div>
             </div>
           </div>
+
+
 
           
 

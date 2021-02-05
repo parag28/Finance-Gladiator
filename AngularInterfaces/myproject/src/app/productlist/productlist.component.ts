@@ -37,5 +37,11 @@ export class ProductlistComponent implements OnInit {
   navigate(productid :number){
     this.router.navigate(["productinfo",productid]);
   }
+  navigate1(){
+    this.router.navigate(["productlist"]);
+  }
+  navigate2(){
+    this.router.navigate(["dashboard"]);
+  }
 
 }
