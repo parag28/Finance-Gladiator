@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-board.component.css']
 })
 export class DashBoardComponent implements OnInit {
-
+  userName: string = localStorage.getItem("localVariableUserName");
   constructor() { }
 
   ngOnInit(): void {

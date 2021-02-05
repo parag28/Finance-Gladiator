@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductinfoComponent } from './productinfo/productinfo.component';
@@ -15,7 +14,6 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
 import {VerifyComponent} from './verify/verify.component';
 import {ProductlistComponent} from './productlist/productlist.component';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     declarations: [
@@ -29,7 +27,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         HomepageComponent,
         DashBoardComponent,
         VerifyComponent,
-        ProductlistComponent 
+        ProductlistComponent
     ],
   imports: [
     BrowserModule,

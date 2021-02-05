@@ -102,31 +102,38 @@
       </div>
       <!-- //Breadcrumb ends -->
       <hr>
-      <h4 style="margin-left: 15px;">Electronic Products</h4>
+      <h4 style="margin-left: 15px;">Products</h4>
       <div class="container my-4">
-        <div *ngIf="productList && productList.length"> 
-        <div *ngFor = "let p of productList">
+        <div *ngIf="productList && productList.length">
+        <div *ngFor = "let p of productList; let i = index" [attr.data-index]="i">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" *ngIf="i%2==0">
             <div class="card mb-2">
               <img class="card-img-top" src="{{p.productpicture}}" alt="Card image cap">
-                  
               <div class="card-body">
                 <h4 class="card-title">{{p.productname}}</h4>
                 <p class="card-text">{{p.productinformation}}</p>
+                <p>{{i}}</p>
                 <button class="btn btnc" (click)="navigate(p.productid)">Buy Now</button>
               </div>
             </div>
           </div>
 
-          
-
-          
+          <div class="col-md-4" *ngIf="i%2==1">
+            <div class="card mb-2">
+              <img class="card-img-top" src="{{p.productpicture}}" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">{{p.productname}}</h4>
+                <p class="card-text">{{p.productinformation}}</p>
+                <p>{{i}}</p>
+                <button class="btn btnc" (click)="navigate(p.productid)">Buy Now</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <hr></div>
-      
 
 
       <!-- //UPCOMING PRODUCTS SLIDING VIEW// -->
