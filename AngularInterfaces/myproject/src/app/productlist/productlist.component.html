@@ -9,16 +9,16 @@
         <div class="row">
           <div class="col-md-5 hidden-xs">
             <a href="#" class="menu-toggle wave-effect">
-              <i class="feather icon-menu"></i>
+
             </a>
           </div>
           <div class="col-md-7 text-right">
             <ul>
               <!-- Profile Menu -->
               <li class="btn-group user-account">
-                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="javascript:" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="user-content">
-                    <div class="user-name">[Username]</div>
+                    <div class="user-name">{{userName}}</div>
                     <div class="user-plan">Welcome to Dashboard!</div>
                   </div>
                 </a>
@@ -39,7 +39,7 @@
     <!-- Main Menu -->
     <div class="sidebar position-fixed" style="width: 15%">
       <div class="logo">
-        <a href="homepage.html">
+        <a href="/">
           <span class="logo-full" style="font-size: 20px; margin-left: 67px;">FINASSIST</span>
         </a>
       </div>
@@ -50,35 +50,51 @@
 				<i class="fas fa-user fa-3x" ></i>
 			</span>
           <span class="profile-name">
-               [USERNAME]
+               {{userName}}
             </span>
           <span class="profile-info">
                 Premium User
             </span>
         </li>
         <li class="spacer"></li>
-        <li class="title">
-          <i class="feather icon-more-horizontal"></i>
-          <span class="menu-title">Dashboard</span>
-        </li>
         <li class="nav-item">
-          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" href="#myCard" aria-expanded="false" aria-controls="page-dashboards">
-            <a href="dashboard.html">
-              <i class="feather icon-credit-card" ></i>
-              <button class="menu-title" (click)="navigate2()">My Card</button></a>
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/userhome" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link wave-effect collapsed" data-parent="#sidebarCookie" data-toggle="collapse" href="#navPageLayouts" aria-expanded="false" aria-controls="page-layouts">
-            <a href="#"><i class="feather icon-sidebar"></i>
-              <button class="menu-title" (click)="navigate1()">Products</button></a>
-            <!-- <i class="feather icon-chevron-down down-arrow"></i></a> -->
+          <a class="nav-link wave-effect collapsed" data-parent="#sidebarCookie" data-toggle="collapse" aria-expanded="false" aria-controls="page-layouts">
+            <a routerLink="/productlist"><i class="feather icon-sidebar"></i>
+              <span class="menu-title">Buy Products</span>
+            </a>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" href="3" aria-expanded="false" aria-controls="page-dashboards">
-            <a href="homepage.html"><i class="feather icon-log-out"></i>
-              <span class="menu-title" >Logout</span></a>
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/emis" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Pay EMIs</span>
+          </a>
+        </li>
+       
+        <li class="nav-item">
+          
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/orders" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Previous Orders</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/transactions" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Transactions</span>
+
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/login" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Log out</span>
           </a>
         </li>
       </ul>
@@ -102,18 +118,20 @@
       </div>
       <!-- //Breadcrumb ends -->
       <hr>
-      <h4 style="margin-left: 15px;">Electronic Products</h4>
+      <h4 style="margin-left: 15px;">Products</h4>
       <div class="container my-4">
-        <div *ngIf="productList && productList.length"> 
-        <div *ngFor = "let p of productList;let i=index" [attr.data-index]="i">
-        <div class="row" >
-          <div class="col-md-8">
+
+        <div *ngIf="productList && productList.length">
+        <div *ngFor = "let p of productList; let i = index" [attr.data-index]="i">
+        <div class="row">
+          <div class="col-md-4" *ngIf="i%2==0">
+
             <div class="card mb-2">
               <img class="card-img-top" src="{{p.productpicture}}" alt="Card image cap">
-                  
               <div class="card-body">
                 <h4 class="card-title">{{p.productname}}</h4>
                 <p class="card-text">{{p.productinformation}}</p>
+                <p>{{i}}</p>
                 <button class="btn btnc" (click)="navigate(p.productid)">Buy Now</button>
                 <p>{{i}}</p>
               </div>
@@ -121,15 +139,22 @@
           </div>
 
 
+          <div class="col-md-4" *ngIf="i%2==1">
+            <div class="card mb-2">
+              <img class="card-img-top" src="{{p.productpicture}}" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">{{p.productname}}</h4>
+                <p class="card-text">{{p.productinformation}}</p>
+                <p>{{i}}</p>
+                <button class="btn btnc" (click)="navigate(p.productid)">Buy Now</button>
+              </div>
+            </div>
+          </div>
 
-          
-
-          
         </div>
       </div>
     </div>
     <hr></div>
-      
 
 
       <!-- //UPCOMING PRODUCTS SLIDING VIEW// -->

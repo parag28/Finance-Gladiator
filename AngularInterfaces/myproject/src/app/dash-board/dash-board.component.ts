@@ -7,7 +7,12 @@ import {Router } from '@angular/router';
 })
 export class DashBoardComponent implements OnInit {
 
+
   constructor(private router:Router) { }
+
+  userName: any = localStorage.getItem("localVariableUserName");
+ 
+
 
   ngOnInit(): void {
   }

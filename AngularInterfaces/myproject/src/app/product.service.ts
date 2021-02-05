@@ -15,8 +15,7 @@ export class ProductService {
   getProductById(productid :number) :Observable<Product>
   {
     console.log("productById service is called");
+
     return this.myhttp.get<Product>(this.baseUrl+"getProduct/" + productid);
-    
-    
   }
 }

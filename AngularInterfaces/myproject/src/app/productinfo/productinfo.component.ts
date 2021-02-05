@@ -20,7 +20,7 @@ private subscription: Subscription;
 product:Product;
 PeriodList=[3,6,9];
 message :string="PAYMENT SUCCESSFULL";
-username:any =localStorage.getItem("localVariableUserName");
+userName: any = localStorage.getItem("localVariableUserName");
 purchaseProd:Purchaseproductdto;
   constructor(private actRoute:ActivatedRoute,private productService: ProductService,private router:Router,private purchaseproductService:PurchaseproductdtoService) {}
 
@@ -49,7 +49,7 @@ purchaseProd:Purchaseproductdto;
     if(window.confirm("Payment Conformation")){
       this.PaymentForm.patchValue({
         productId : this.productid,
-        userName :this.username
+        userName :this.userName
       })
       this.purchaseProd=this.PaymentForm.value;
       this.purchaseproductService.AddPurchaseProduct(this.purchaseProd).subscribe(()=>console.log("PurchaseProduct added"));
