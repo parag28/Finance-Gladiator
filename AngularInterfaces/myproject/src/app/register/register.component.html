@@ -1,0 +1,132 @@
+<div class="division-outer">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #805acb;">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav justify-content-end ml-auto">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+        <li class="nav-item ml-auto">
+          <a class="nav-link pull-right" routerLink="/login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--// NAVBAR ENDs -->
+  <!-- <form class="" action="login.html"  method="post" ngNativeValidate> -->
+
+  <form class="" #userForm="ngForm"  ngNativeValidate>
+    <div class="row justify-content-center">
+      <div class="col-md-10 offset-md-1">
+        <span class="anchor" id="formComplex"></span>
+        <hr class="my-5">
+        <!-- form complex example -->
+        <div class="shadow-lg card card-outline-secondary">
+          <div class="card-header" style="background-color: #b388ff; color: aliceblue;">
+            <h3 class="mb-0">Registration Form</h3>
+          </div>
+          <div class="card-body">
+            <div class="row mt-4">
+              <div class="col-sm-5 pb-3">
+                <label for="fname">Full Name</label>
+                <input class="form-control" name="userName" id="fname" placeholder="Enter Full Name" type="text" [(ngModel)]="user.name" required>
+              </div>
+              <div class="col-sm-3 pb-3">
+                <label for="dob">Date of birth</label>
+                <input class="form-control" id="dateOfBirth" name="dob" placeholder="" type="date" min="1961-01-01" max="2000-12-31" [(ngModel)]="user.dateOfBirth" required>
+              </div>
+              <div class="col-sm-4 pb-3">
+                <label for="contact">Phone No.</label>
+                <div class="input-group">
+                  <input class="form-control" id="contact" name="phoneNumber" placeholder="Enter Mobile Number" type="text" pattern="[0-9]{10}" [(ngModel)]="user.phoneNumber" required>
+                </div>
+              </div>
+              <div class="col-sm-6 pb-3">
+                <label for="exampleEmail">Email</label>
+                <input class="form-control" placeholder="xxxx@xxx.xxx" name="email" id="exampleEmail" type="email" [(ngModel)]="user.email" required>
+              </div>
+              <!-- ------------------------------->
+              <div class="col-sm-3 pb-3">
+                <label for="exampleBank">Select Bank</label>
+                <select class="form-control custom-select" name="bankName" id="exampleBank" [(ngModel)]="user.bankName" required>
+                  <option value="" disabled selected>Select Bank</option>
+                  <option  *ngFor="let b of bankNames" [ngValue]="b">
+                    {{b}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-sm-3 pb-3">
+                <label for="exampleAc">Account Number</label>
+                <input class="form-control" placeholder="6 digit Ac.no(eg.123456)" name="accountNumber" id="exampleAc" type="text" pattern="[0-9]{6}" [(ngModel)]="user.accountNumber" required>
+              </div>
+              <div class="col-sm-6 pb-3">
+                <label for="exampleUsername">Username</label>
+                <input class="form-control" placeholder="Create Username" name="userName" id="exampleUsername" type="text" [(ngModel)]="user.userName" required>
+              </div>
+              <div class="col-sm-6 pb-3">
+                <label for="exampleIfsc">IFSC Code</label>
+                <input class="form-control" id="exampleIfsc" name="ifscCode" placeholder="eg.SBIN0123456" type="text" pattern="^[A-Z]{4}0[A-Z0-9]{6}$" [(ngModel)]="user.ifscCode" required>
+              </div>
+
+
+              <div class="col-sm-6 pb-3">
+                <label for="examplePass">Password</label>
+                <input class="form-control" name="password" id="password" minlength="4" placeholder="Enter Password(min. length 4)" type="password" [(ngModel)]="user.password"  required>
+              </div>
+              <div class="col-sm-6 pb-3">
+                <label for="exampleConfPass">Confirm Password</label>
+                <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" (change)="checkPassword()" [(ngModel)]="user.confirm_password"  required >
+                <div *ngIf="!isPassEqual" >Password is not matching, please re-enter!</div>
+              </div>
+
+              <div class="col-md-6 pb-3">
+                <label for="exampleAddress">Address</label>
+                <textarea class="form-control" name="address" id="exampleAddress" rows="2" [(ngModel)]="user.address"  required></textarea>
+                <small class="text-muted">Permanent Address</small>
+              </div>
+
+               <div class="col-md-4 pb-3 ml-5 ">
+                <label for="exampleCardType">Card Type</label><br>
+                  <div class="btn-group">
+                    <label>
+                      <input type="radio"
+                             value="0"
+                             [checked]="user.cardType === 0"
+                             id="point1"
+                             (change)="onCardTypeSelectionChange(0)"
+                             name="cardtype">Gold
+                  </label>
+                  <label>
+                    <input type="radio"
+                           value="1"
+                           [checked]="user.cardType === 1"
+                           id="point2"
+                           (change)="onCardTypeSelectionChange(1)"
+                           name="cardtype">Platinum
+                  </label>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="float-left">
+              <p>Already a Member? <a routerLink="/login">Login here</a></p>
+            </div>
+            <div class="float-right">
+              <input class="btn btn-secondary" type="reset" value="Reset">
+              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;"(click)="onRegisterClick()" routerLink="/login" type="submit" value="Register"/>
+            </div>
+          </div>
+        </div><!--/card-->
+        <hr class="my-5">
+      </div>
+    </div><!--/row-->
+  </form>
+
+</div>
