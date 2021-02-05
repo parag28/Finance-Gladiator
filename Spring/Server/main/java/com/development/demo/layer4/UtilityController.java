@@ -52,6 +52,7 @@ public class UtilityController {
     user.setPhonenumber(userInitializeDTO.getPhoneNumber());
     user.setEmail(userInitializeDTO.getEmail());
     user.setSavingsaccountnumber(userInitializeDTO.getAccountNumber());
+    user.setBankname(userInitializeDTO.getBankName());
     user.setUsername(userInitializeDTO.getUserName());
     user.setIfsccode(userInitializeDTO.getIfscCode());
     user.setAddress(userInitializeDTO.getAddress());
