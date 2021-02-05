@@ -10,23 +10,23 @@ import { RegisterService } from '../register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-// 
+//
 export class RegisterComponent implements OnInit {
 
   user= new Register;
   bankNames= ["Allahabad Bank","Axis Bank","Bank of Maharahtra","Bank of Baroda",
   "Central Bank","HDFC Bank","ICICI Bank","Indian Bank","Metro Multistate",
   "Punjab National Bank","RBL Bank","State Bank of India","Union Bank of India","Yes Bank"];
-  
+
   cards=[{label: "Gold", value: 0}, {label: "Platinum", value: 1}]
 
-  constructor(private _registerService: RegisterService,private _router : Router) { 
+  constructor(private _registerService: RegisterService,private _router : Router) {
     this.user=new Register();
   }
 
 
   ngOnInit(): void {
-    
+
   }
   isPassEqual=true;
 
@@ -35,13 +35,13 @@ export class RegisterComponent implements OnInit {
     this.isPassEqual= this.user.password===this.user.confirm_password;
   }
 
-  
+
 
   // onRegister(){
   //   console.log(this.user);
   // }
 
-  
+
   onCardTypeSelectionChange(entry: number): void {
     this.user.cardType = entry;
 }
@@ -51,15 +51,16 @@ export class RegisterComponent implements OnInit {
     this._registerService.addNewUser(this.user)
     .subscribe(data=>
       {
+        console.log("Data in add new user"+data);
         if(data == -100)
-        { 
-          alert("User Already Registered");
+        {
+          alert("User Already Registered, Please login");
         }
         else
         {
           alert("Congratulations! You are registered. Please Login :) ");
-          this._router.navigate(['login']);
         }
+        this._router.navigate(['login']);
       });
 
   }

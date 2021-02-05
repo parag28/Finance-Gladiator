@@ -11,7 +11,7 @@ import {Router } from '@angular/router';
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit {
-  userName: any= localStorage.getItem("localVariableUserName");
+  userName: string |null = localStorage.getItem("localVariableUserName");
   private subscription: Subscription;
   productList: Product[];
   productListDisplay: Product[][];
@@ -41,12 +41,6 @@ getProductById(productid: number){
 
 navigate(productid: number){
     this.router.navigate(['productinfo', productid]);
-  }
-  navigate1(){
-    this.router.navigate(["productlist"]);
-  }
-  navigate2(){
-    this.router.navigate(["dashboard"]);
   }
 
 }

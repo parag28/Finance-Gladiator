@@ -20,6 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { EmisComponent } from './emis/emis.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { PaymentsuccessfullComponent } from './paymentsuccessfull/paymentsuccessfull.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -36,6 +37,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
         EmisComponent,
         OrdersComponent,
         TransactionsComponent,
+        PaymentsuccessfullComponent,
     ],
   imports: [
     BrowserModule,

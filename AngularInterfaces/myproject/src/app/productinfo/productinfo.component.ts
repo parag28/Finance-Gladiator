@@ -28,7 +28,7 @@ purchaseProd:Purchaseproductdto;
     this.subs=this.actRoute.paramMap.subscribe(params=>{
       console.log(params);
       this.productid=Number(params.get('productid'));
-      this.productService.getProductById(this.productid).subscribe((data: Product) => { 
+      this.productService.getProductById(this.productid).subscribe((data: Product) => {
         console.log("productobject is fetched by id");
         console.log(this.product);
         this.product = data;
@@ -42,7 +42,7 @@ purchaseProd:Purchaseproductdto;
     userName:new FormControl(''),
     quantity:new FormControl('',[Validators.required]),
     numberOfEmis:new FormControl('',[Validators.required]),
-    
+
 
   })
   navigate(){
@@ -53,7 +53,7 @@ purchaseProd:Purchaseproductdto;
       })
       this.purchaseProd=this.PaymentForm.value;
       this.purchaseproductService.AddPurchaseProduct(this.purchaseProd).subscribe(()=>console.log("PurchaseProduct added"));
-      this.router.navigate(["dashboard"]);}
+      this.router.navigate(["paymentsuccess"]);}
   }
 
 }

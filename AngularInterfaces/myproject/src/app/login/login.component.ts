@@ -12,8 +12,8 @@ import {Product} from '../product';
 })
 export class LoginComponent implements OnInit {
 
-  login: Login;
-  fetchedLogin: Login;
+  login: any={};
+  fetchedLogin:any={};
   constructor(private loginService: LoginService, private router: Router) {
   }
 
