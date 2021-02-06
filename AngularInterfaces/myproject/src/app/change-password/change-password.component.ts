@@ -13,7 +13,7 @@ import {Product} from '../product';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-  userName: string|null;
+  userName: any;
   newPassword: string;
   public frmSignup: FormGroup;
   login:Login;
