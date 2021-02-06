@@ -54,6 +54,7 @@ public class UtilityController {
     user.setSavingsaccountnumber(userInitializeDTO.getAccountNumber());
     user.setBankname(userInitializeDTO.getBankName());
     user.setUsername(userInitializeDTO.getUserName());
+    user.setBankname(userInitializeDTO.getBankName());
     user.setIfsccode(userInitializeDTO.getIfscCode());
     user.setAddress(userInitializeDTO.getAddress());
     String message = userService.addUserService(user);
