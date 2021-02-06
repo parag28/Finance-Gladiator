@@ -1,5 +1,7 @@
 package com.development.demo.layer1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -78,6 +80,7 @@ public class Emi implements Serializable {
 		this.remainingemis = remainingemis;
 	}
 
+
 	public Product getProduct() {
 		return this.product;
 	}
@@ -85,6 +88,7 @@ public class Emi implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
 
 	public User getUser() {
 		return this.user;
