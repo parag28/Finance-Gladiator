@@ -6,6 +6,4 @@ password:string;
 userapprovalstatus:number;
 usertype:number;
 user :User;
-
-    
 }

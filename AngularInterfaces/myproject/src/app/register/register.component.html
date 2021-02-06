@@ -20,7 +20,7 @@
   <!--// NAVBAR ENDs -->
   <!-- <form class="" action="login.html"  method="post" ngNativeValidate> -->
 
-  <form class="" #userForm="ngForm"  ngNativeValidate>
+  <form class="" #userForm="ngForm" (ngSubmit)="onRegisterClick()"  ngNativeValidate>
     <div class="row justify-content-center">
       <div class="col-md-10 offset-md-1">
         <span class="anchor" id="formComplex"></span>
@@ -38,7 +38,7 @@
               </div>
               <div class="col-sm-3 pb-3">
                 <label for="dob">Date of birth</label>
-                <input class="form-control" id="dateOfBirth" name="dob" placeholder="" type="date" min="1961-01-01" max="2000-12-31" [(ngModel)]="user.dateOfBirth" required>
+                <input class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="" type="date" min="1961-01-01" max="2000-12-31" [(ngModel)]="user.dateOfBirth" required>
               </div>
               <div class="col-sm-4 pb-3">
                 <label for="contact">Phone No.</label>
@@ -81,7 +81,7 @@
               <div class="col-sm-6 pb-3">
                 <label for="exampleConfPass">Confirm Password</label>
                 <input class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" type="password" (change)="checkPassword()" [(ngModel)]="user.confirm_password"  required >
-                <div *ngIf="!isPassEqual" >Password is not matching, please re-enter!</div>
+                <div *ngIf="!isPassEqual" [ngStyle]="{'color': 'red'}">Password is not matching, please re-enter!</div>
               </div>
 
               <div class="col-md-6 pb-3">
@@ -91,17 +91,17 @@
               </div>
 
                <div class="col-md-4 pb-3 ml-5 ">
-                <label for="exampleCardType">Card Type</label><br>
-                  <div class="btn-group">
-                    <label>
+                <label for="exampleCardType" >Card Type</label><br>
+                  <div class="btn-group" [ngStyle]="{'border-style': 'outset'}">
+                    <label class="ml-4">
                       <input type="radio"
                              value="0"
                              [checked]="user.cardType === 0"
                              id="point1"
                              (change)="onCardTypeSelectionChange(0)"
-                             name="cardtype">Gold
+                             name="cardtype" checked required>Gold
                   </label>
-                  <label>
+                  <label class="ml-8">
                     <input type="radio"
                            value="1"
                            [checked]="user.cardType === 1"
@@ -120,7 +120,7 @@
             </div>
             <div class="float-right">
               <input class="btn btn-secondary" type="reset" value="Reset">
-              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;"(click)="onRegisterClick()"  type="submit" value="Register"/>
+              <input class="btn btn-primary" style="color: aliceblue; background-color: #805acb;" type="submit" value="Register"/>
             </div>
           </div>
         </div><!--/card-->

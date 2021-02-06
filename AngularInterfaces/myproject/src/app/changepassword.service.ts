@@ -7,14 +7,12 @@ import {Login} from './login';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class ChangepasswordService {
   baseUrl: string = 'http://localhost:8080/';
-  login:Login;
-  constructor(private http:HttpClient) { }
-  getLoginByUserName(username: string) :Observable<Login>{
-    console.log("Hit in service login: method getLoginByUserName");
-    return this.http.get<Login>(this.baseUrl+"getLogin/"+username);
+  constructor(private myhttp:HttpClient) { }
+  updatePassword(login:Login){
+    this.baseUrl="http://localhost:8080/updateLogin";
+    console.log("Came to change password service");
+    return this.myhttp.post<string>(this.baseUrl,login);
   }
-
-
 }

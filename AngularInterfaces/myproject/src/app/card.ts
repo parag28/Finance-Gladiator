@@ -7,5 +7,4 @@ cardtype:number;
 creditremaining:number;
 validupto:string;
 user:User;
-    
 }
