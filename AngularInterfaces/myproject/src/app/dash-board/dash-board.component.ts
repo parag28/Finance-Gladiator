@@ -20,7 +20,7 @@ export class DashBoardComponent implements OnInit {
     this.router.navigate(["productlist"]);
   }
   navigate2(){
-    this.router.navigate(["dashboard"]);
+    this.router.navigate(["userhome"]);
   }
 
 }

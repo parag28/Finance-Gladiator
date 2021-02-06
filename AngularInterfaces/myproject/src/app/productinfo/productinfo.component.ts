@@ -53,7 +53,7 @@ purchaseProd:Purchaseproductdto;
       })
       this.purchaseProd=this.PaymentForm.value;
       this.purchaseproductService.AddPurchaseProduct(this.purchaseProd).subscribe(()=>console.log("PurchaseProduct added"));
-      this.router.navigate(["dashboard"]);}
+      this.router.navigate(["userhome"]);}
   }
 
 }
