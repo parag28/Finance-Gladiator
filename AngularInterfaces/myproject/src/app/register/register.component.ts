@@ -15,8 +15,8 @@ export class RegisterComponent implements OnInit {
 
   user= new Register;
   bankNames= ["Allahabad Bank","Axis Bank","Bank of Maharahtra","Bank of Baroda",
-    "Central Bank","HDFC Bank","ICICI Bank","Indian Bank","Metro Multistate",
-    "Punjab National Bank","RBL Bank","State Bank of India","Union Bank of India","Yes Bank"];
+  "Central Bank","HDFC Bank","ICICI Bank","Indian Bank","Metro Multistate",
+  "Punjab National Bank","RBL Bank","State Bank of India","Union Bank of India","Yes Bank"];
 
   cards=[{label: "Gold", value: 0}, {label: "Platinum", value: 1}]
 
@@ -44,25 +44,21 @@ export class RegisterComponent implements OnInit {
 
   onCardTypeSelectionChange(entry: number): void {
     this.user.cardType = entry;
-  }
+}
 
   onRegisterClick()
   {
     this._registerService.addNewUser(this.user)
-      .subscribe(data=>
+    .subscribe(data=>
       {
-        console.log("Data in add new user"+data);
-        if(data == -100)
+        if(data === -100)
         {
-          alert("User Already Registered, Please login");
+          alert("User Already Registered");
+          return null;
         }
-        else
-        {
-          alert("Congratulations! You are registered. Please Login :) ");
-        }
-        this._router.navigate(['login']);
       });
-
+      alert("Congratulations! You are registered. Please Login :) ");
+      this._router.navigate(['/registrationpaymentsuccessful']);
   }
 
 
