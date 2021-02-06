@@ -15,8 +15,8 @@ export class DashBoardComponent implements OnInit {
   
    
 
-  //userName: string|null = localStorage.getItem("localVariableUserName");
-  userName="manoj";
+  userName: any = localStorage.getItem("localVariableUserName");
+  
   cardTypeDisplay: string|null;
   private subscription: Subscription;
   totalCreditDisplay: number;
