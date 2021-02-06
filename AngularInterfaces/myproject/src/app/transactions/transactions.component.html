@@ -1,0 +1,157 @@
+<body id="landing" class="sidebar-open">
+<div class="page-container animation">
+  <div id="dashboardPage">
+    <div class="topbar" style="background-color: #805acb;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-7 text-right" style="margin-left: 40%">
+            <ul>
+              <!-- Profile Menu -->
+              <li class="btn-group user-account">
+                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="user-content">
+                    <div class="user-name">{{userName}}</div>
+                    <div class="user-plan">Welcome to Dashboard!</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mobile-menu-toggle">
+                <a href="#" class="menu-toggle wave-effect">
+                  <i class="feather icon-menu"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar position-fixed" style="width: 15%">
+      <div class="logo">
+        <a routerLink="/">
+          <span class="logo-full" style="font-size: 20px; margin-left: 67px;">FINASSIST</span>
+        </a>
+      </div>
+      <ul id="sidebarCookie">
+        <li class="spacer"></li>
+        <li class="profile">
+                    <span class="profile-image" style="font-size: 10px;">
+                        <i class="fas fa-user fa-3x" ></i>
+                    </span>
+          <span class="profile-name">
+                    {{userName}}
+                    </span>
+          <span class="profile-info">
+                        Premium User
+                    </span>
+        </li>
+        <li class="spacer"></li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" href="#myCard" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed" data-parent="#sidebarCookie" data-toggle="collapse" href="#navPageLayouts" aria-expanded="false" aria-controls="page-layouts">
+            <a routerLink="/productlist"><i class="feather icon-sidebar"></i>
+              <span class="menu-title">Buy Products</span>
+            </a>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/emis" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Pay EMIs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/orders" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Previous Orders</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/transactions" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Transactions</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie" data-toggle="collapse" routerLink="/login" aria-expanded="false" aria-controls="page-dashboards">
+            <i class="feather icon-credit-card" ></i>
+            <span class="menu-title">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <main>
+      <div class="page-breadcrumb">
+        <div class="row">
+          <div class="col-6">
+            <h4 class="page-title">Transactions</h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/userhome">Dashboard</a></li>
+                <li class="breadcrumb-item"><a routerLink="/transactions">Transactions</a></li>
+              </ol>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex align-items-center">
+                  <div>
+                    <h4 class="card-title">Previous Transactions</h4>
+                  </div>
+                </div>
+                <!-- title -->
+              </div>
+              <div class="table-responsive">
+                <table class="table v-middle">
+                  <thead>
+                  <tr class="bg-light">
+                    <th class="border-top-0">Transaction ID</th>
+                    <th class="border-top-0">Product Quantity</th>
+                    <th class="border-top-0">Amount</th>
+                    <th class="border-top-0">Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ob of transaction">
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="m-r-10"><a class="btn btn-circle btn-info text-white">MT</a></div>
+                          <div class="">
+                            <h4 class="m-b-0 font-16">{{ob.transactionid}}</h4>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{ob.productquantity}}</td>
+                      <td>{{ob.transactionamount}}</td>
+                      <td>
+                        <h5 class="m-b-0" > Successful </h5>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </main>
+  </div>
+</div>
+</body>
