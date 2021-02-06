@@ -13,6 +13,7 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
 import {EmisComponent} from './emis/emis.component';
 import {OrdersComponent} from './orders/orders.component';
 import {TransactionsComponent} from './transactions/transactions.component'
+import {PaymentsuccessfullComponent} from './paymentsuccessfull/paymentsuccessfull.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,9 @@ const routes: Routes = [
   {path: 'userhome', component: DashBoardComponent},
   {path: 'emis', component: EmisComponent},
   {path: 'orders', component: OrdersComponent},
-  {path: 'transactions', component: TransactionsComponent}
+  {path: 'transactions', component: TransactionsComponent},
+  {path: 'paymentsuccess', component: PaymentsuccessfullComponent}
+
 
 ];
 

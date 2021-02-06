@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-  userName: any= localStorage.getItem("localVariableUserName");
+  userName: string |null = localStorage.getItem("localVariableUserName");
   constructor() { }
 
   ngOnInit(): void {

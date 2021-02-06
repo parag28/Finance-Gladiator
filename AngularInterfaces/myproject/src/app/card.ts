@@ -4,7 +4,7 @@ export class Card {
 username:string;
 cardnumber:number;
 cardtype:number;
-credittemaining:number;
+creditremaining:number;
 validupto:string;
 user:User;
     

@@ -16,7 +16,7 @@ export class RegisterService {
   addNewUser(newUser: Register)
   {
      this._url = this._tempurl;
-     this._url += 'initializeNewUser';
+     this._url += 'initializeUser';
      return this._http.post(this._url,newUser);
    }
 }
