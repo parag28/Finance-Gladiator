@@ -51,18 +51,14 @@ export class RegisterComponent implements OnInit {
     this._registerService.addNewUser(this.user)
     .subscribe(data=>
       {
-        console.log("Data in add new user"+data);
-        if(data == -100)
-        {
-          alert("User Already Registered, Please login");
+        if(data === -100)
+        { 
+          alert("User Already Registered");
+          return null;
         }
-        else
-        {
-          alert("Congratulations! You are registered. Please Login :) ");
-        }
-        this._router.navigate(['login']);
       });
-
+      alert("Congratulations! You are registered. Please Login :) ");
+      this._router.navigate(['/login']);
   }
 
 
