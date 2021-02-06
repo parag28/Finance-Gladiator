@@ -15,10 +15,10 @@ export class OrderService {
 
   constructor(private _http : HttpClient) { }
 
-  getOrders()
+  getOrders(userName:string)
   {
      this._url = this._tempurl;
-     this._url += 'getAllPurchases';
+     this._url += 'getAllUserOrders/'+userName;
      return this._http.get<Purchase>(this._url);
   }
 }

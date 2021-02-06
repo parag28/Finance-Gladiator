@@ -34,15 +34,15 @@ export class OrdersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.subscription=this._orderService.getOrders()
+    this.subscription=this._orderService.getOrders(this.userName)
     .subscribe((data : Purchase)=>{
-      // this.purchase = data;      //un-comment this if the table is not empty
+       this.purchase = data;      //un-comment this if the table is not empty
       console.log(this.purchase);
     }, (err : any) =>{
       console.log(err);
     });
   }
 
- 
+
 
 }

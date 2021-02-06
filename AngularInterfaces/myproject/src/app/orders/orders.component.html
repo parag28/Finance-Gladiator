@@ -125,7 +125,6 @@
                   <thead>
                   <tr class="bg-light">
                     <th class="border-top-0">Product Name</th>
-                    <th class="border-top-0">Product id</th>
                     <th class="border-top-0">Date</th>
                     <th class="border-top-0">Price</th>
                   </tr>
@@ -134,16 +133,15 @@
                   <tr *ngFor="let ob of purchase">
                     <td>
                       <div class="d-flex align-items-center">
-                        <div class="m-r-10"><a class="btn btn-circle btn-info text-white">MT</a></div>
+                        <div class="m-r-10"><a class="btn btn-circle btn-info text-white"></a></div>
                         <div class="">
-                          <h4 class="m-b-0 font-16">{{ob.product.productName}}</h4>
+                          <h4 class="m-b-0 font-16">{{ob.product.productname}}</h4>
                         </div>
                       </div>
                     </td>
-                    <td>{{ob.purchaseId}}</td>
-                    <td>{{ob.purchaseDate}}</td>
+                     <td>{{ob.purchasedate}}</td>
                     <td>
-                      <h5 class="m-b-0">${{ob.product.price}}</h5>
+                      <h5 class="m-b-0">${{ob.product.productprice}}</h5>
                     </td>
                   </tr>
                   </tbody>

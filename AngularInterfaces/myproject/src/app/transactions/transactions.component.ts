@@ -28,9 +28,9 @@ export class TransactionsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.subscription=this._transactionService.getTransactions()
-    .subscribe((data : Transaction)=>{
-      // this.transaction = data;      //un-comment this if the table is not empty
+    this.subscription=this._transactionService.getTransactions(this.userName)
+    .subscribe((data : Transaction[])=>{
+      this.transaction = data;
       console.log(this.transaction);
     }, (err : any) =>{
       console.log(err);
