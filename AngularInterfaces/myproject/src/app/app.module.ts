@@ -21,6 +21,7 @@ import { EmisComponent } from './emis/emis.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { PaymentsuccessfullComponent } from './paymentsuccessfull/paymentsuccessfull.component';
+import { RegistrationpaymentsuccessfulComponent } from './registrationpaymentsuccessful/registrationpaymentsuccessful.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -38,6 +39,7 @@ import { PaymentsuccessfullComponent } from './paymentsuccessfull/paymentsuccess
         OrdersComponent,
         TransactionsComponent,
         PaymentsuccessfullComponent,
+        RegistrationpaymentsuccessfulComponent,
     ],
   imports: [
     BrowserModule,

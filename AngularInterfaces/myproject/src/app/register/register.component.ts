@@ -52,13 +52,13 @@ export class RegisterComponent implements OnInit {
     .subscribe(data=>
       {
         if(data === -100)
-        { 
+        {
           alert("User Already Registered");
           return null;
         }
       });
       alert("Congratulations! You are registered. Please Login :) ");
-      this._router.navigate(['/login']);
+      this._router.navigate(['/registrationpaymentsuccessful']);
   }
 
 

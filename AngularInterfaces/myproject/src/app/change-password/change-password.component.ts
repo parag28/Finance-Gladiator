@@ -6,7 +6,6 @@ import {LoginService} from '../login.service';
 import {Login} from '../login';
 import {Observable} from 'rxjs';
 import {Product} from '../product';
-import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-change-password',

@@ -14,6 +14,7 @@ import {EmisComponent} from './emis/emis.component';
 import {OrdersComponent} from './orders/orders.component';
 import {TransactionsComponent} from './transactions/transactions.component'
 import {PaymentsuccessfullComponent} from './paymentsuccessfull/paymentsuccessfull.component';
+import {RegistrationpaymentsuccessfulComponent} from './registrationpaymentsuccessful/registrationpaymentsuccessful.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'emis', component: EmisComponent},
   {path: 'orders', component: OrdersComponent},
   {path: 'transactions', component: TransactionsComponent},
-  {path: 'paymentsuccess', component: PaymentsuccessfullComponent}
+  {path: 'paymentsuccess', component: PaymentsuccessfullComponent},
+  {path: 'registrationpaymentsuccessful', component: RegistrationpaymentsuccessfulComponent}
 
 
 ];
