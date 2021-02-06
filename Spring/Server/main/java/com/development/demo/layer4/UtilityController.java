@@ -3,15 +3,14 @@ package com.development.demo.layer4;
 import com.development.demo.DTO.PurchaseProductDTO;
 import com.development.demo.DTO.UserInitializeDTO;
 import com.development.demo.layer1.*;
+import com.development.demo.layer1.Emi;
 import com.development.demo.layer3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -52,7 +51,6 @@ public class UtilityController {
     user.setPhonenumber(userInitializeDTO.getPhoneNumber());
     user.setEmail(userInitializeDTO.getEmail());
     user.setSavingsaccountnumber(userInitializeDTO.getAccountNumber());
-    user.setBankname(userInitializeDTO.getBankName());
     user.setUsername(userInitializeDTO.getUserName());
     user.setBankname(userInitializeDTO.getBankName());
     user.setIfsccode(userInitializeDTO.getIfscCode());
@@ -151,6 +149,20 @@ public class UtilityController {
     return "success";
   }
 
+  @GetMapping("/getAllUserEMIs/{userName}")
+  @ResponseBody
+  @CrossOrigin
+  public List<Emi> getAllUserEMIs(@PathVariable String userName){
+    //We need only the EMIs that are
+    List<Emi> bufferList = emiService.getAllEMIsService();
+    List<Emi> returnList = new ArrayList<Emi>();
+    for(Emi emi:bufferList){
+      if(emi.getUser().getUsername().equals(userName) && (emi.getRemainingemis() > 0)){
+        returnList.add(emi);
+      }
+    }
+    return returnList;
+  }
   @GetMapping(value = "/payEmi/{emiId}")
   @ResponseBody
   @CrossOrigin
