@@ -1,5 +1,7 @@
 package com.development.demo.layer1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -90,7 +92,7 @@ public class Product implements Serializable {
 	public void setProductprice(int productprice) {
 		this.productprice = productprice;
 	}
-
+  @JsonIgnore
 	public List<Transaction> getTransactions() {
 		return this.transactions;
 	}
@@ -98,6 +100,7 @@ public class Product implements Serializable {
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
+
 
 	public Transaction addTransaction(Transaction transaction) {
 		getTransactions().add(transaction);
@@ -112,7 +115,7 @@ public class Product implements Serializable {
 
 		return transaction;
 	}
-
+  @JsonIgnore
 	public List<Emi> getEmis() {
 		return this.emis;
 	}
@@ -134,7 +137,7 @@ public class Product implements Serializable {
 
 		return emi;
 	}
-
+  @JsonIgnore
 	public List<Purchase> getPurchases() {
 		return this.purchases;
 	}

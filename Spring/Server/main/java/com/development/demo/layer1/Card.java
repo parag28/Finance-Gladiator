@@ -1,5 +1,7 @@
 package com.development.demo.layer1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -71,7 +73,7 @@ public class Card implements Serializable {
 	public void setValidupto(String validupto) {
 		this.validupto = validupto;
 	}
-
+  @JsonIgnore
 	public User getUser() {
 		return this.user;
 	}
