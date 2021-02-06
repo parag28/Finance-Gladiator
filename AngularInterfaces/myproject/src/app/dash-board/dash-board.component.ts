@@ -12,11 +12,11 @@ export class DashBoardComponent implements OnInit {
 
 
   constructor(private cardService: CardServiceService, private router: Router) {}
-  
-   
 
-  //userName: string|null = localStorage.getItem("localVariableUserName");
-  userName="manoj";
+
+
+  userName: string|null = localStorage.getItem("localVariableUserName");
+  //userName="manoj";
   cardTypeDisplay: string|null;
   private subscription: Subscription;
   totalCreditDisplay: number;
@@ -25,7 +25,7 @@ export class DashBoardComponent implements OnInit {
   remainingCreditDisplay:number;
   card: Card;
 
- ngOnInit(): void { 
+ ngOnInit(): void {
    if (this.userName != null) {
     this.subscription = this.cardService.getCardByUserName(this.userName).subscribe((data: Card) => {
       this.card = data;
@@ -48,6 +48,6 @@ export class DashBoardComponent implements OnInit {
 }
 
   }
- 
+
 
 
