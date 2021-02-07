@@ -163,6 +163,37 @@ public class UtilityController {
     }
     return returnList;
   }
+
+  @GetMapping("/getAllUserOrders/{userName}")
+  @ResponseBody
+  @CrossOrigin
+  public List<Purchase> getAllUserOrders(@PathVariable String userName){
+    //We need only the EMIs that are
+    List<Purchase> bufferList = purchaseService.getAllPurchasesService();
+    List<Purchase> returnList = new ArrayList<Purchase>();
+    for(Purchase purchase:bufferList){
+      if(purchase.getUser().getUsername().equals(userName)){
+        returnList.add(purchase);
+      }
+    }
+    return returnList;
+  }
+
+  @GetMapping("/getAllTransactionsByUserName/{userName}")
+  @ResponseBody
+  @CrossOrigin
+  public List<Transaction> getAllTransactionsByUserName(@PathVariable String userName){
+    //We need only the EMIs that are
+    List<Transaction> bufferList = transactionService.getAllTransactionsService();
+    List<Transaction> returnList = new ArrayList<Transaction>();
+    for(Transaction transaction:bufferList){
+      if(transaction.getUser().getUsername().equals(userName)){
+        returnList.add(transaction);
+      }
+    }
+    return returnList;
+  }
+
   @GetMapping(value = "/payEmi/{emiId}")
   @ResponseBody
   @CrossOrigin

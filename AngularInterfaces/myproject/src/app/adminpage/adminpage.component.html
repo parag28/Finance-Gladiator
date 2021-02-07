@@ -4,15 +4,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-    <ul class="navbar-nav justify-content-end ml-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="Register.html">Register</a>
-      </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link pull-right" href="login.html">Login</a>
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
@@ -27,87 +19,30 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">UserName</th>
-      <th scope="col">Age</th>
-      <th scope="col">Aadhar Number</th>
+       <th scope="col">Date Of Birth</th>
       <th scope="col">Contact number</th>
       <th scope="col">OTP Verified?</th>
-      <th scope="col">    Edit</th>
-      <th scope="col">    Delete</th>
+      <th scope="col">    Approve</th>
+      <th scope="col">    Decline</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>21</td>
-      <td>123456</td>
-      <td>8546582141</td>
+    <tr *ngFor = "let login of logins; let i=index" [attr.data-index]="i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{login.user.name}}</td>
+      <td>{{login.username}}</td>
+     <td>{{login.user.dateofbirth}}</td>
+      <td>{{login.user.phonenumber}}</td>
       <td>Yes</td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        EDIT
+      <td><button type="button" class="btn btn-success" data-bs-toggle="tooltip" (click)="approveUser(login.username)" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+       Approve
       </button></td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        Delete
+      <td><button type="button" class="btn btn-danger" data-bs-toggle="tooltip" (click)="declineUser(login.username)" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+        Decline
       </button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>22</td>
-      <td>123456</td>
-      <td>8546582141</td>
-      <td>Yes</td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        EDIT
-      </button></td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        Delete
-      </button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>25</td>
-      <td>123456</td>
-      <td>8546582141</td>
-      <td>Yes</td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        EDIT
-      </button></td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        Delete
-      </button></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>ABCD</td>
-      <td>XYZ</td>
-      <td>30</td>
-      <td>123456</td>
-      <td>8546582141</td>
-      <td>Yes</td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        EDIT
-      </button></td>
-      <td><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-        Delete
-      </button></td>
-
     </tr>
     </tbody>
   </table>
-
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <h4>User Details Here </h4>
-  <p>...</p>
-  <p>...</p>
-
 </div>
 </div>
 
