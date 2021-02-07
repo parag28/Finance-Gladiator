@@ -28,7 +28,7 @@ const dummyPurchases = [{
 export class OrdersComponent implements OnInit {
   userName: string  |null= localStorage.getItem("localVariableUserName");
   private subscription: Subscription;
-  purchase = dummyPurchases; //comment this if the table is not empty
+  purchase :Purchase; //comment this if the table is not empty
 
   constructor(private _orderService: OrderService, private router: Router) {  }
 

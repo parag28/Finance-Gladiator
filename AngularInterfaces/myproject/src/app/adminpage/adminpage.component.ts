@@ -15,7 +15,7 @@ export class AdminpageComponent implements OnInit {
   constructor(private loginService:LoginService, private router:Router) { }
   logins:Login[];
   ngOnInit(): void {
-    this.subscription = this.loginService.getAllLogins().subscribe((data: Emi[]) => {
+    this.subscription = this.loginService.getAllLogins().subscribe((data: Login[]) => {
       this.logins = data;
       console.log(this.logins);
     }, (err) => {

@@ -20,9 +20,9 @@ const dummyTransactions = [{
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-  userName: string |null = localStorage.getItem("localVariableUserName");
+  userName: any = localStorage.getItem("localVariableUserName");
   private subscription: Subscription;
-  transaction = dummyTransactions; //comment this if the table is not empty
+  transaction :Transaction[]; //comment this if the table is not empty
 
   constructor(private _transactionService: TransactionService, private router: Router) {  }
 

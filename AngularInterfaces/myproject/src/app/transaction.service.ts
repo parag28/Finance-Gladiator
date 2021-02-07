@@ -16,6 +16,6 @@ export class TransactionService {
   {
      this._url = this._tempurl;
      this._url += 'getAllTransactionsByUserName/'+userName;
-     return this._http.get<Transaction>(this._url);
+     return this._http.get<Transaction[]>(this._url);
   }
 }
