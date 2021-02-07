@@ -14,3 +14,9 @@
   background-color: #805acb;
   color: white;
 }
+
+/* product-list cards */
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
