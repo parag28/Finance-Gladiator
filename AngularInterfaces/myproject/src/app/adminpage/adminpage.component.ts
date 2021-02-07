@@ -1,57 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { ApproveuserService } from '../approveuser.service';
-import { Login } from '../login';
-import { LoginService } from '../login.service';
-import { User } from '../user';
+import {Login} from '../login';
+import {Emi} from '../emi';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {LoginService} from '../login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-adminpage',
-  templateUrl:'./adminpage.component.html',
+  templateUrl: './adminpage.component.html',
   styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
- // userName: string |null = localStorage.getItem("localVariableUserName");
- userName:string="bindu19";
   private subscription: Subscription;
-  user: User;
-  UsersList: User[];
-  UsersListDisplay: User[][];
-  result:string;
-login:Login;
-
-  constructor(private approveuserService: ApproveuserService,private loginService: LoginService, private router: Router ) { }
-
+  constructor(private loginService:LoginService, private router:Router) { }
+  logins:Login[];
   ngOnInit(): void {
-    this.subscription = this.approveuserService.getUsersByUserName(this.userName).subscribe((data: User ) => {
-      this.user = data;
-      console.log("userlist checking");
-      console.log(this.user);
-      }, (err: any) => {
-       console.log(err);
-     });
-  }
-
-  
-  function(){
-    let subscription= this.loginService.getLoginsByUserName(this.userName).subscribe((data: Login)=>{
-      this.login=data;
-      this.login.userapprovalstatus=1;
-      this.loginService.updatelogin(this.login).subscribe((data:string)=>{
-        this.result=data;
-      });
-    }, (err: any) => {
+    this.subscription = this.loginService.getAllLogins().subscribe((data: Emi[]) => {
+      this.logins = data;
+      console.log(this.logins);
+    }, (err) => {
       console.log(err);
-    
-    });
-      this.loginService.updatelogin(this.login).subscribe((data:string)=>{
-        this.result=data;
-      }, (err: any) => {
-        console.log(err);
     });
   }
-
-
-
+  approveUser(userName:string){
+    this.loginService.approveUser(userName);
+    location.reload();
+  }
+  declineUser(userName:string){
+    this.loginService.declineUser(userName);
+    location.reload();
+  }
 }
+
