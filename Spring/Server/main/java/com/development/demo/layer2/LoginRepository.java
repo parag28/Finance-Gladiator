@@ -8,6 +8,7 @@ import java.util.List;
 @Repository
 public interface LoginRepository {
     List<Login> getAllLogins();
+    List<Login> getAllLoginsAll();
     String addLogin(Login login);
     Login getLogin(String userName);
     String updateLogin(Login login);

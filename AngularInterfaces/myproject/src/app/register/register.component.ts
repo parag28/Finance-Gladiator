@@ -3,6 +3,7 @@ import {FormControl, Validators,} from '@angular/forms';
 import { Register } from '../DTO1/register.dto';
 import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
+import {UtilityService} from '../utility.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { RegisterService } from '../register.service';
 })
 //
 export class RegisterComponent implements OnInit {
-
+  userNames:string[];
   user= new Register;
   bankNames= ["Allahabad Bank","Axis Bank","Bank of Maharahtra","Bank of Baroda",
   "Central Bank","HDFC Bank","ICICI Bank","Indian Bank","Metro Multistate",
@@ -20,8 +21,9 @@ export class RegisterComponent implements OnInit {
 
   cards=[{label: "Gold", value: 0}, {label: "Platinum", value: 1}]
 
-  constructor(private _registerService: RegisterService,private _router : Router) {
+  constructor(private _registerService: RegisterService,private _router : Router, utilityService:UtilityService) {
     this.user=new Register();
+
   }
 
 
@@ -48,6 +50,15 @@ export class RegisterComponent implements OnInit {
 
   onRegisterClick()
   {
+    this._registerService.getAllUserNames()
+      .subscribe(data=>{
+          this.userNames=data;
+        }
+      );
+    if(this.userNames.includes(this.user.userName)){
+      alert("The UserName is already Taken, Please Try another one");
+      return null;
+    }
     this._registerService.addNewUser(this.user)
     .subscribe(data=>
       {
@@ -57,7 +68,6 @@ export class RegisterComponent implements OnInit {
           return null;
         }
       });
-      alert("Congratulations! You are registered. Please Login :) ");
       this._router.navigate(['/registrationpaymentsuccessful']);
   }
 

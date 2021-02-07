@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaderResponse, HttpErrorResponse } from '@angular/common/http';
 import { Register } from './DTO1/register.dto';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,7 @@ export class RegisterService {
      this._url += 'initializeUser';
      return this._http.post(this._url,newUser);
    }
+  getAllUserNames():Observable<string[]>{
+    return this._http.get<string[]>(this._url+"getAllUserNames");
+  }
 }

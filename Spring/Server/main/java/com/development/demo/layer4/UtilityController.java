@@ -163,7 +163,6 @@ public class UtilityController {
     }
     return returnList;
   }
-
   @GetMapping("/getAllUserOrders/{userName}")
   @ResponseBody
   @CrossOrigin
@@ -193,7 +192,6 @@ public class UtilityController {
     }
     return returnList;
   }
-
   @GetMapping(value = "/payEmi/{emiId}")
   @ResponseBody
   @CrossOrigin
@@ -223,4 +221,16 @@ public class UtilityController {
     System.out.println(message);
     return "success";
   }
+  @GetMapping(value = "/getAllUserNames")
+  @ResponseBody
+  @CrossOrigin
+  public List<String> getAllUserNames(){
+    List<String> returnList = new ArrayList<String>();
+    List<Login> logins = loginService.getAllLoginsAllService();
+    for(Login login:logins){
+      returnList.add(login.getUsername());
+    }
+    return returnList;
+  }
+
 }

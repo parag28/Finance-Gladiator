@@ -5,6 +5,7 @@ import com.development.demo.layer2.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class LoginServiceImplementation implements LoginService{
@@ -29,8 +30,9 @@ public class LoginServiceImplementation implements LoginService{
       return loginRepository.getLogin(userName);
     }
     catch (Exception e){
-      System.out.println("Exception");
-      return  null;
+      Login login = new Login();
+      login.setUsername("erroruser");
+      return  login;
     }
   }
 
@@ -46,7 +48,19 @@ public class LoginServiceImplementation implements LoginService{
   }
 
   @Override
+  public List<Login> getAllLoginsAllService() {
+    try{
+      return loginRepository.getAllLoginsAll();
+    }
+    catch(Exception e){
+      System.out.println(e.getMessage());
+      return new ArrayList<Login>();
+    }
+  }
+
+  @Override
   public String updateLoginService(Login login) {
+    System.out.println("Entered update Login Service");
     try{
       return loginRepository.updateLogin(login);
     }

@@ -40,8 +40,11 @@ public class LoginController {
 		 try {
           return loginService.getLoginService(username);
 		 }
-      catch (Exception e){
-         return null;
+		 catch (Exception e){
+		   Login login = new Login();
+		   login.setUsername("erroruser");
+		   login.setPassword("erroruser");
+		   return login;
       }
 
 
@@ -57,13 +60,26 @@ public class LoginController {
 	 @ResponseBody
 	 @CrossOrigin
 	 public String updateLogin(@RequestBody Login login){
+     System.out.println("Entered Update Login in Controller");
 		 try {
 	            loginService.updateLoginService(login);
-	            return "success";
+              return "success";
 	     }
 	     catch (Exception e){
-	            return "fail";
+          return "fail";
 	     }
 
 	 }
+
+	 /*
+	 getAllLogin for the logins with a zero approval status.
+	 This is for all the ones
+	  */
+  @GetMapping("/getAllLoginsAll")
+  @ResponseBody
+  @CrossOrigin
+  public List<Login> getAllLoginsAll(){
+    return loginService.getAllLoginsAllService();
+  }
+
 }

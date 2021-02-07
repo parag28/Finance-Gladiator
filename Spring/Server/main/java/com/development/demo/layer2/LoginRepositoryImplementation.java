@@ -19,15 +19,21 @@ public class LoginRepositoryImplementation implements LoginRepository {
         //This returns all the unverified users
         //1 is approved, 0 is not approved -1 is rejected
         String queryString = " from Login";
-        System.out.println("Entity Manager: "+entityManager);
         List<Login> resultList = entityManager.createQuery(queryString).getResultList();
         List<Login> returnList = new ArrayList<>();
         for(Login login:resultList){
-          if(login.getUserApprovalStatus()==0)
+          if(login.getUserApprovalStatus()==0)//Declined users won't be shown
             returnList.add(login);
         }
         return returnList;
     }
+
+
+  @Override
+  public List<Login> getAllLoginsAll() {
+    String queryString = " from Login";
+    return  entityManager.createQuery(queryString).getResultList();
+  }
 
     @Transactional
     public String addLogin(Login login) {
