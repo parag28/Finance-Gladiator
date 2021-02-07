@@ -20,12 +20,14 @@
 
     <h3 style="text-align: left;margin-left: 60%">Cost <span class="badge badge-warning">{{product.productprice}}</span></h3>
     <h3 style="text-align: left;margin-left: 60%">BasePay <span class="badge badge-warning">{{product.productprice/10}}</span></h3>
-    <form [formGroup]="PaymentForm" (ngSubmit)="navigate()">
+    <form [formGroup]="PaymentForm" (ngSubmit)="navigate(product.numberofproducts)">
       
     <h4 style="text-align: left;margin-left: 60%">EMI Period <select class="custom-select" formControlName="numberOfEmis"><option *ngFor="let period of PeriodList"[ngValue]="period">{{period}}Months</option></select></h4>
+    <div *ngIf="!PaymentForm.controls.numberOfEmis?.valid && (PaymentForm.controls.numberOfEmis?.dirty ||PaymentForm.controls.numberOfEmis?.touched)"><p style="color:red">Invalid NumberOfEmis</p></div>
     <h4 style="text-align: left;margin-left: 60%">Quantity<input type="text" formControlName="quantity" placeholder="Max Available:{{product.numberofproducts}}"></h4>
-    
-    <button style="margin-top: 35px;" type="button" class="btn btn-outline-primary"  type="submit">Pay Now</button>
+    <div *ngIf="!PaymentForm.controls.quantity?.valid && (PaymentForm.controls.quantity?.dirty ||PaymentForm.controls.quantity?.touched)"><p style="color:red">Invalid quantity</p></div>
+
+    <button style="margin-top: 35px;" type="button" class="btn btn-outline-primary" [disabled]="!PaymentForm.valid" type="submit">Pay Now</button>
       </form>
   </div>
 </div>

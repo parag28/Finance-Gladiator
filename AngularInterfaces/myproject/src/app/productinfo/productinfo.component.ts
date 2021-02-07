@@ -21,6 +21,7 @@ product:Product;
 PeriodList=[3,6,9];
 message :string="PAYMENT SUCCESSFULL";
 userName: any = localStorage.getItem("localVariableUserName");
+
 purchaseProd:Purchaseproductdto;
   constructor(private actRoute:ActivatedRoute,private productService: ProductService,private router:Router,private purchaseproductService:PurchaseproductdtoService) {}
 
@@ -42,21 +43,29 @@ purchaseProd:Purchaseproductdto;
     userName:new FormControl(''),
     quantity:new FormControl('',[Validators.required]),
     numberOfEmis:new FormControl('',[Validators.required]),
-
+    
 
   })
-  navigate(){
-    if(window.confirm("Payment Conformation")){
+  navigate(numberofproducts:number){
+   
+    
+    if(this.PaymentForm.get("quantity")?.value>numberofproducts){
+      alert("Quantity is more than Max Available:"+numberofproducts);
+
+    }
+    else{
+    if(window.confirm("Payment Confirmation!!")){
       this.PaymentForm.patchValue({
         productId : this.productid,
         userName :this.userName
       })
+      
       this.purchaseProd=this.PaymentForm.value;
       this.purchaseproductService.AddPurchaseProduct(this.purchaseProd).subscribe(()=>console.log("PurchaseProduct added"));
 
 
       this.router.navigate(["paymentsuccess"]);}
-
+    }    
   }
 
 }

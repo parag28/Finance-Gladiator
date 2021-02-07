@@ -14,21 +14,19 @@ import {EmiService } from '../emi.service';
   styleUrls: ['./emis.component.css']
 })
 export class EmisComponent implements OnInit {
-  userName: string|null = localStorage.getItem("localVariableUserName");
+  userName: any = localStorage.getItem("localVariableUserName");
   private subscription: Subscription;
   EmiList:Emi[];
   result:string;
-  
-  
+
+
   constructor(private emiservice:EmiService,private router: Router,private payemiservice:PayEMIService) {
   }
 
   ngOnInit(): void {
-    
-    this.subscription = this.emiservice.getAllEmis().subscribe((data: Emi[]) => {
+
+    this.subscription = this.emiservice.getAllEmis(this.userName).subscribe((data: Emi[]) => {
       this.EmiList = data;
-      console.log("allemilist checking in component");
-      console.log(this.EmiList);
       }, (err) => {
        console.log(err);
      });
@@ -36,7 +34,7 @@ export class EmisComponent implements OnInit {
   }
   navigate(emiId:number){
      this.payemiservice.getPayEmi(emiId).subscribe((data: string) => {
-     
+
       this.result=data;
       }, (err) => {
        console.log(err);

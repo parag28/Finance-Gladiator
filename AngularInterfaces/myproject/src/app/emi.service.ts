@@ -9,9 +9,10 @@ export class EmiService {
 
   baseUrl: string = 'http://localhost:8080/';
   constructor(private myhttp:HttpClient) { }
-  getAllEmis() :Observable<Emi[]>
+  getAllEmis(userName:string) :Observable<Emi[]>
   {
     console.log("AllEmis called");
-    return this.myhttp.get<Emi[]>(this.baseUrl+"getAllEMIs/");
+    return this.myhttp.get<Emi[]>(this.baseUrl+"getAllUserEMIs/"+userName);
+    /*getAllUserEMIs*/
   }
 }
