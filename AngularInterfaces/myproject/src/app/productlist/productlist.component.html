@@ -123,7 +123,52 @@
         <h4 style="margin-left: 15px;">Products</h4>
         <div class="container my-4">
   
+<!--       product list-view      -->
+           <div class="container-fluid my-4">
           <div *ngIf="productList && productList.length">
+            <div *ngFor = "let p of productList; let i = index" [attr.data-index]="i">
+              <div class="row">
+                <div class="col-12 mt-3" *ngIf="i%2==0">
+                  <div class="card mb-2">
+                    <div class="card-horizontal">
+                      <div class="img-square-wrapper">
+                           <img class="card-img-left" width="420" height="250" src="{{p.productpicture}}" alt="Card image cap">
+                      </div>
+                      <div class="card-body">
+                            <h4 class="card-title">{{p.productname}}</h4>
+                            <p class="card-text">{{p.productinformation}}</p>
+                            <button class="btn btnc float-right" (click)="navigate(p.productid)">Buy Now</button>
+
+                       </div>
+                    </div>
+                 </div>
+                </div>
+
+                <div class="col-12 mt-3" *ngIf="i%2==1">
+                  <div class="card mb-2">
+                    <div class="card-horizontal">
+                      <div class="img-square-wrapper ">
+                           <img class="" width="390" height="250" src="{{p.productpicture}}" alt="Card image cap">
+                      </div>
+                      <div class="card-body">
+                            <h4 class="card-title">{{p.productname}}</h4>
+                            <p class="card-text">{{p.productinformation}}</p>
+                            <button class="btn btnc float-right" (click)="navigate(p.productid)">Buy Now</button>
+
+                       </div>
+                    </div>
+                 </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+         </div>
+          
+          
+          
+<!--           <div *ngIf="productList && productList.length">
           <div *ngFor = "let p of productList; let i = index" [attr.data-index]="i">
           <div class="row">
             <div class="col-md-4" *ngIf="i%2==0">
@@ -157,7 +202,7 @@
         </div>
       </div>
       <hr></div>
-  
+   -->
   
         <!-- //UPCOMING PRODUCTS SLIDING VIEW// -->
         <h4 style="margin-left: 15px;color: red;">Upcoming Products</h4>
