@@ -70,10 +70,10 @@ public class UtilityController {
     login.setPassword(password);
     float creditRemaining;
     if(cardType==1){
-      creditRemaining=10000;
+      creditRemaining=100000;
     }
     else {
-      creditRemaining=8000;
+      creditRemaining=80000;
     }
     String validUpto="12/32";
     card.setCardnumber(generateCardNumber());

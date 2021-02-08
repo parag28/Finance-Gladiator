@@ -4,8 +4,7 @@ import {CustomValidators} from '../custom-validators';
 import {ChangepasswordService} from '../changepassword.service';
 import {LoginService} from '../login.service';
 import {Login} from '../login';
-import {Observable} from 'rxjs';
-import {Product} from '../product';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -17,7 +16,7 @@ export class ChangePasswordComponent implements OnInit {
   newPassword: string;
   public frmSignup: FormGroup;
   login:Login;
-  constructor(private fb: FormBuilder, private service: ChangepasswordService, private loginService:LoginService) {
+  constructor(private fb: FormBuilder, private service: ChangepasswordService, private loginService:LoginService,private router:Router) {
     this.frmSignup = this.createSignupForm();
   }
   createSignupForm(): FormGroup {
@@ -47,13 +46,14 @@ export class ChangePasswordComponent implements OnInit {
       this.login.password = this.newPassword;
       console.log(this.login);
       this.service.updatePassword(this.login).subscribe((data:string) =>{
-        console.log("Got into the loop");
         console.log(data);
+        console.log("This is printed");
+
       });
     }, (err) => {
       console.log(err);
     });
-
+    this.router.navigate(["login"]);
   }
   ngOnInit(): void {
   }
