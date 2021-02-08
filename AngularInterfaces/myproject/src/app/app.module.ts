@@ -22,6 +22,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { PaymentsuccessfullComponent } from './paymentsuccessfull/paymentsuccessfull.component';
 import { RegistrationpaymentsuccessfulComponent } from './registrationpaymentsuccessful/registrationpaymentsuccessful.component';
+import { AdminnotapprovedComponent } from './adminnotapproved/adminnotapproved.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,6 +41,7 @@ import { RegistrationpaymentsuccessfulComponent } from './registrationpaymentsuc
         TransactionsComponent,
         PaymentsuccessfullComponent,
         RegistrationpaymentsuccessfulComponent,
+        AdminnotapprovedComponent,
     ],
   imports: [
     BrowserModule,

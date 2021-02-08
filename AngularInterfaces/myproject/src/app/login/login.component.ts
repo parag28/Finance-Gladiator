@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
   loginFunction(){
     this.loginService.getLoginByUserName(this.login.username).subscribe((data: Login)=>
     {
+      if(this.login.username=="admin" && this.login.password=="admin"){
+        this.router.navigate(['adminhome']);
+        return;
+      }
       this.fetchedLogin = data;
       if(this.fetchedLogin.username!="erroruser" ){
         if(this.fetchedLogin.userApprovalStatus==0){
@@ -35,12 +39,7 @@ export class LoginComponent implements OnInit {
         }
         if(this.fetchedLogin.password==this.login.password){
           localStorage.setItem("localVariableUserName",this.login.username);
-          if(this.fetchedLogin.username=="admin" && this.fetchedLogin.password=="admin"){
-            this.router.navigate(['adminhome']);
-          }
-          else{
             this.router.navigate(['userhome']);
-          }
 
         }
         else{
