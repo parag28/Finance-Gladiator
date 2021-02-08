@@ -8,6 +8,8 @@ import {Router } from '@angular/router';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import {Purchaseproductdto} from '../purchaseproductdto';
 import {PurchaseproductdtoService} from '../purchaseproductdto.service';
+import {Card} from '../card';
+import{CardServiceService} from '../card-service.service';
 @Component({
   selector: 'app-productinfo',
   templateUrl: './productinfo.component.html',
@@ -21,9 +23,9 @@ product:Product;
 PeriodList=[3,6,9];
 message :string="PAYMENT SUCCESSFULL";
 userName: any = localStorage.getItem("localVariableUserName");
-
+card:Card;
 purchaseProd:Purchaseproductdto;
-  constructor(private actRoute:ActivatedRoute,private productService: ProductService,private router:Router,private purchaseproductService:PurchaseproductdtoService) {}
+  constructor(private actRoute:ActivatedRoute,private productService: ProductService,private router:Router,private purchaseproductService:PurchaseproductdtoService,private cardservice:CardServiceService) {}
 
   ngOnInit(): void {
     this.subs=this.actRoute.paramMap.subscribe(params=>{
@@ -37,18 +39,29 @@ purchaseProd:Purchaseproductdto;
         console.log(err);
       });
     });
+
+    this.cardservice.getCardByUserName(this.userName).subscribe((data: Card) => {
+      console.log("card object is fetched by userName");
+      console.log(this.card);
+      this.card = data;
+      }, (err) => {
+      console.log(err);
+    });
   }
   PaymentForm=new FormGroup({
     productId:new FormControl(''),
     userName:new FormControl(''),
     quantity:new FormControl('',[Validators.required]),
     numberOfEmis:new FormControl('',[Validators.required]),
-    
+
 
   })
-  navigate(numberofproducts:number){
-   
-    
+  navigate(numberofproducts:number,productprice:number){
+    if(this.card.creditremaining<(productprice*this.PaymentForm.get("quantity")?.value)){
+      alert("Enough Credit Not available");
+
+    }
+    else{
     if(this.PaymentForm.get("quantity")?.value>numberofproducts){
       alert("Quantity is more than Max Available:"+numberofproducts);
 
@@ -67,5 +80,5 @@ purchaseProd:Purchaseproductdto;
       this.router.navigate(["paymentsuccess"]);}
     }    
   }
-
+  }
 }
