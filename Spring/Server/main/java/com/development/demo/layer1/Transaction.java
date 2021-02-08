@@ -14,6 +14,16 @@ import java.io.Serializable;
 public class Transaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+  public String getTransactiondate() {
+    return transactiondate;
+  }
+
+  public void setTransactiondate(String transactiondate) {
+    this.transactiondate = transactiondate;
+  }
+
+  private String transactiondate;
+
 	private int productquantity;
 
 	private float transactionamount;

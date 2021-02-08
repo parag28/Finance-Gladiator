@@ -6,8 +6,9 @@ export class Transaction {
     transactionid:number;
     transactionstatus:number;
     transactionamount:number;
+    transactiondate:string;
     product:Product;
     user:User;
 
-   
+
 }

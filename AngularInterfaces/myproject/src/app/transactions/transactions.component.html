@@ -112,16 +112,18 @@
                 <div class="d-md-flex align-items-center">
                   <div>
                     <h4 class="card-title">Previous Transactions</h4>
+                    <p class="card-subtitle">[*Note: 0 Quantity means EMI for the corresponding object]</p>
                   </div>
                 </div>
-                <!-- title -->
+
               </div>
               <div class="table-responsive">
                 <table class="table v-middle">
                   <thead>
                   <tr class="bg-light">
-                    <th class="border-top-0">Transaction ID</th>
+                    <th class="border-top-0">Product Name</th>
                     <th class="border-top-0">Product Quantity</th>
+                    <th class="border-top-0">Transaction Date</th>
                     <th class="border-top-0">Amount</th>
                     <th class="border-top-0">Status</th>
                   </tr>
@@ -132,11 +134,12 @@
                         <div class="d-flex align-items-center">
                           <div class="m-r-10"><a class="btn btn-circle btn-info text-white"></a></div>
                           <div class="">
-                            <h4 class="m-b-0 font-16">{{ob.transactionid}}</h4>
+                            <h4 class="m-b-0 font-16">{{ob.product.productname}}</h4>
                           </div>
                         </div>
                       </td>
                       <td>{{ob.productquantity}}</td>
+                      <td>{{ob.transactiondate}}</td>
                       <td>{{ob.transactionamount}}</td>
                       <td>
                         <h5 class="m-b-0" > Successful </h5>

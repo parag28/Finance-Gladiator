@@ -4,15 +4,6 @@ import { TransactionService } from '../transaction.service';
 import { Subscription } from 'rxjs';
 import { Transaction } from '../transaction';
 
-const dummyTransactions = [{
-  transactionid : 112,
-  productquantity : 3,
-  transactionamount: 210
-},{
-  transactionid : 113,
-  productquantity : 2,
-  transactionamount: 500
-}]
 
 @Component({
   selector: 'app-transactions',
@@ -22,7 +13,7 @@ const dummyTransactions = [{
 export class TransactionsComponent implements OnInit {
   userName: any = localStorage.getItem("localVariableUserName");
   private subscription: Subscription;
-  transaction :Transaction[]; //comment this if the table is not empty
+  transaction : Transaction[];
 
   constructor(private _transactionService: TransactionService, private router: Router) {  }
 
