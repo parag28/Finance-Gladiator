@@ -21,16 +21,27 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   loginFunction(){
-    console.log("entered login func");
     this.loginService.getLoginByUserName(this.login.username).subscribe((data: Login)=>
     {
-      console.log(data);
       this.fetchedLogin = data;
-      if(this.fetchedLogin.username!="erroruser"){
+      if(this.fetchedLogin.username!="erroruser" ){
+        if(this.fetchedLogin.userApprovalStatus==0){
+          alert("The Admin hasn't Approved your Candidature Yet, Please visit Soon");
+          return null;
+        }
+        if(this.fetchedLogin.userApprovalStatus==-1){
+          alert("The Admin Rejected your candidature. Please apply again");
+          return null;
+        }
         if(this.fetchedLogin.password==this.login.password){
           localStorage.setItem("localVariableUserName",this.login.username);
-          console.log(this.fetchedLogin);
-          this.router.navigate(['userhome']);
+          if(this.fetchedLogin.username=="admin" && this.fetchedLogin.password=="admin"){
+            this.router.navigate(['adminhome']);
+          }
+          else{
+            this.router.navigate(['userhome']);
+          }
+
         }
         else{
           alert("Invalid Credentials, Retry");
