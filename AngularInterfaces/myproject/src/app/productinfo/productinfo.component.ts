@@ -57,15 +57,20 @@ purchaseProd:Purchaseproductdto;
 
   })
   navigate(numberofproducts:number,productprice:number){
-    if(this.card.creditremaining<(productprice*this.PaymentForm.get("quantity")?.value)){
-      alert("Enough Credit Not available");
-
+    if(this.PaymentForm.get("quantity")?.value<0){
+      alert("Invalid Quantity!!");
     }
     else{
-    if(this.PaymentForm.get("quantity")?.value>numberofproducts){
-      alert("Quantity is more than Max Available:"+numberofproducts);
-
-    }
+      if(this.PaymentForm.get("quantity")?.value>numberofproducts){
+        alert("Quantity is more than Max Available:"+numberofproducts);
+  
+      }
+    
+    else{
+      if(this.card.creditremaining<(productprice*this.PaymentForm.get("quantity")?.value)){
+        alert("Enough Credit Not available");
+  
+      }
     else{
     if(window.confirm("Payment Confirmation!!")){
       this.PaymentForm.patchValue({
@@ -81,4 +86,5 @@ purchaseProd:Purchaseproductdto;
     }    
   }
   }
+}
 }
