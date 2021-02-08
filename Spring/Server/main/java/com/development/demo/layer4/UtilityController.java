@@ -68,7 +68,7 @@ public class UtilityController {
     login.setUserApprovalStatus(0);
     login.setUsername(user.getUsername());
     login.setPassword(password);
-    int creditRemaining;
+    float creditRemaining;
     if(cardType==1){
       creditRemaining=10000;
     }
@@ -112,15 +112,16 @@ public class UtilityController {
     Transaction transaction = new Transaction();
     transaction.setUser(userService.getUserService(userName));
     transaction.setProduct(productService.getProductService(productId));
-
+    transaction.setProductquantity(quantity);
+    transaction.setTransactiondate(strDate);
     /*10 % is first month and the rest is given to EMIS distributed over the number of months*/
     /*
     * Address the credit unavailable condition
     * */
-    int transactionAmount ;
-    int totalCost = productService.getProductService(productId).getProductprice()*quantity;
-    transactionAmount = totalCost/10;
-    int emiAmount = ((totalCost/10)*9)/numberOfEmis;
+    float transactionAmount ;
+    float totalCost = productService.getProductService(productId).getProductprice()*quantity;
+    transactionAmount = totalCost/(float)10;
+    float emiAmount = ((totalCost/10)*9)/numberOfEmis;
     transaction.setTransactionamount(transactionAmount);
     transaction.setTransactionstatus(1);
     message = transactionService.addTransactionService(transaction);
@@ -197,7 +198,7 @@ public class UtilityController {
   @CrossOrigin
   public String payEMI(@PathVariable int emiId){
     Emi emi = emiService.getEMIService(emiId);
-    int transactionAmount = emi.getMonthlycharge();
+    float transactionAmount = emi.getMonthlycharge();
     Date date = Calendar.getInstance().getTime();
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     String strDate = dateFormat.format(date);

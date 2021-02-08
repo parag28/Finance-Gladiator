@@ -28,7 +28,7 @@ public class Product implements Serializable {
 
 	private String productpicture;
 
-	private int productprice;
+	private float productprice;
 
 	//bi-directional many-to-one association to Transaction
 	@OneToMany(mappedBy="product")
@@ -85,11 +85,11 @@ public class Product implements Serializable {
 		this.productpicture = productpicture;
 	}
 
-	public int getProductprice() {
+	public float getProductprice() {
 		return this.productprice;
 	}
 
-	public void setProductprice(int productprice) {
+	public void setProductprice(float productprice) {
 		this.productprice = productprice;
 	}
   @JsonIgnore

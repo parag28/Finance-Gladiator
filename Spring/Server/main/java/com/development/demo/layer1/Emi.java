@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class Emi implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
   @GeneratedValue
 	private int emiid;
 
@@ -23,7 +23,7 @@ public class Emi implements Serializable {
 
 	private int emispaid;
 
-	private int monthlycharge;
+	private float monthlycharge;
 
 	private int remainingemis;
 
@@ -64,11 +64,11 @@ public class Emi implements Serializable {
 		this.emispaid = emispaid;
 	}
 
-	public int getMonthlycharge() {
+	public float getMonthlycharge() {
 		return this.monthlycharge;
 	}
 
-	public void setMonthlycharge(int monthlycharge) {
+	public void setMonthlycharge(float monthlycharge) {
 		this.monthlycharge = monthlycharge;
 	}
 

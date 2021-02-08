@@ -22,7 +22,7 @@ public class Card implements Serializable {
 
 	private int cardtype;
 
-	private int creditremaining;
+	private float creditremaining;
 
 	private String validupto;
 
@@ -58,11 +58,11 @@ public class Card implements Serializable {
 		this.cardtype = cardtype;
 	}
 
-	public int getCreditremaining() {
+	public float getCreditremaining() {
 		return this.creditremaining;
 	}
 
-	public void setCreditremaining(int creditremaining) {
+	public void setCreditremaining(float creditremaining) {
 		this.creditremaining = creditremaining;
 	}
 
