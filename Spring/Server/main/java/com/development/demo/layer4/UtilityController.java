@@ -207,6 +207,7 @@ public class UtilityController {
     transaction.setProductquantity(0);
     transaction.setProduct(emi.getProduct());
     transaction.setTransactionstatus(1);
+    transaction.setTransactiondate(strDate);
     transaction.setTransactionamount(emi.getMonthlycharge());
     String message = transactionService.addTransactionService(transaction);
     System.out.println(message);
